@@ -1,0 +1,129 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+/* Variable declarations */
+:root {
+  --primaryColor: #101111;
+  --backgroundColor: #f5f5f5;
+  --primaryTextColor: grey;
+  --buttonColor: rgb(179, 153, 6);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+  /* overflow: hidden; */
+  text-align: center;
+  font-size: 16px;
+  background-color: var(--backgroundColor);
+  color: var(--primaryTextColor);
+}
+
+a {
+  color: var(--backgroundColor);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--primaryTextColor);
+  transform: scale(1.1);
+}
+
+.app {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+/*--------------------------------------------------------------
+                  # NAVBAR
+--------------------------------------------------------------*/
+.navbar {
+  width: 100vw;
+  font-size: 1rem;
+  text-shadow: 2px 2px 2px #000000;
+  font-weight: 700;
+  background-color: var(--primaryColor);
+}
+.active {
+  border-radius: 0 0.7rem;
+  box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);
+}
+
+
+/*--------------------------------------------------------------
+                  # FOOTER
+--------------------------------------------------------------*/
+.footer {
+  text-align: center;
+  font-size: 0.8rem;
+  text-shadow: 0px 0px 0px #000000;
+  font-weight: 700;
+  color: var(--primaryTextColor);
+  background-color: var(--primaryColor);
+}
+
+
+
+/*--------------------------------------------------------------
+                  # HOME
+--------------------------------------------------------------*/
+#home{
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 60px;
+  text-align: center;
+   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../images/banner1.jpeg") no-repeat center fixed;
+  background-size: cover;
+  color: white;
+  font-size: 30px;
+}
+
+.header h1{
+  text-transform: uppercase;
+font-size: 3rem;
+font-weight: 600;
+text-shadow: 2px 2px 2px grey;
+}
+.header h2{
+font-size: 1.5rem;
+}
+.header button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 1rem;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  border-radius: 0 0.7rem;
+  box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);
+}
+.header button:hover {
+  transform: scale(1.1);
+}
+
+/* Page Content */
+.content {padding:20px;}
