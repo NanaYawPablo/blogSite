@@ -97,8 +97,8 @@ a:hover {
   background-size: cover;
   color: white;
   font-size: 30px;
+  min-height: 45vh;
 }
-
 .header h1{
   text-transform: uppercase;
 font-size: 3rem;
@@ -108,7 +108,77 @@ text-shadow: 2px 2px 2px grey;
 .header h2{
 font-size: 1.5rem;
 }
-.header button {
+.header p{
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+/* Page Content */
+.content {padding:20px;}
+
+#notifyToast {
+  color: #fff;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  border: 1px solid var(--buttonColor);
+  background-color: var(--primaryColor);
+}
+
+
+
+/*--------------------------------------------------------------
+                  #     SUBSCRIPTION FORM
+--------------------------------------------------------------*/
+
+.fcf-body {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--primaryTextColor);
+  padding: 0 10px;
+  max-width: 100%;
+}
+.fcf-form-group {
+  margin-bottom: 1rem;
+}
+.fcf-input-group {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: stretch;
+  align-items: center;
+  width: 100%;
+}
+.fcf-form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--primaryTextColor);
+  background-color: var(--backgroundColor);
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  outline: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.fcf-form-control:focus {
+  border: 1px solid var(--primaryColor);
+}
+textarea.fcf-form-control {
+  height: auto;
+}
+
+label.fcf-label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+#fcf-button {
   border: none;
   outline: 0;
   display: inline-block;
@@ -119,11 +189,89 @@ font-size: 1.5rem;
   cursor: pointer;
   color: white;
   border-radius: 0 0.7rem;
-  box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);
+  box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);  
 }
-.header button:hover {
+#fcf-button:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
   transform: scale(1.1);
 }
+.fcf-btn:focus,
+.fcf-btn.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.formError {
+  color: palevioletred;
+  margin-top: 0.5rem;
+}
 
-/* Page Content */
-.content {padding:20px;}
+
+
+/*--------------------------------------------------------------
+                  #     ARTICLE CARDS
+--------------------------------------------------------------*/
+
+.articleCard {
+  width: 100%;
+  height: 320px;
+  color: #d6d600;
+  box-shadow: 0 0 0 2px rgb(230, 229, 229), inset 0 2px 0 rgba(0, 0, 0, 0.08),
+    0 3px 0 2px rgba(0, 0, 0, 0.05);
+  /* overflow: scroll; */
+}
+
+.articleCard-img {
+  width: 100%;
+  height: 100%;
+  background-color: black; /* fallback color */
+  background-position: center;
+  background-size: cover;
+  transition: all 0.4s ease-in-out;
+  filter: grayscale(10%);
+  opacity: 1;
+}
+.articleCard:hover .articleCard-img,
+.articleCard:focus .articleCard-img {
+  transform: scale(1.02);
+  opacity: 1;
+}
+
+.articleCard:hover .articleCard-img-overlay {
+  color: white;
+  /* background-color: var(--backgroundColor); */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  height: 100%;
+  padding: 1rem;
+}
+
+.articleCard-img-overlay > h4,
+.articleCard-img-overlay > p,
+.articleCard-img-overlay .button,
+.articleCard-img-overlay .projectBadges {
+  visibility: hidden;
+}
+
+.articleCard-img-overlay:hover h4,
+.articleCard-img-overlay:hover p,
+.articleCard-img-overlay:hover .button,
+.articleCard-img-overlay:hover .projectBadges {
+  visibility: visible;
+}
+
+.articleCard:hover .articleCard-img-overlay p {
+  font-size: 0.7em;
+  letter-spacing: 0.02em;
+  padding: 1rem;
+}
+.articleCard-img-overlay h4 {
+  text-shadow: 4px 4px 4px #000000;
+}
+.articleCard-img-overlay .button {
+  margin: 0.5rem 3rem 0 3rem;
+  background-color: transparent;
+}
+.projectBadges .badge {
+  margin: 5px;
+  font-size: 0.5em;
+}
