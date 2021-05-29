@@ -20,14 +20,15 @@ const Home = () => {
                 <p>Some content blablabla, some content blablabla.</p>
 
                 <Container fluid>
-                                <Row>
-                                    <div className="col-12 col-md-5 offset-md-1">
-                                        
-                                        <ArticleCard/>
-
-                                    </div>
-                                    </Row>
-                            </Container>
+                    <Row>
+                        <div className="col-12 col-md-5 offset-md-1">
+                            <ArticleCard />
+                        </div>
+                        <div className="col-12 col-md-5 offset-md-1">
+                            <ArticleCard />
+                        </div>
+                    </Row>
+                </Container>
 
             </section>
 
