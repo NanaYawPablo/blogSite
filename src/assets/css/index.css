@@ -10,7 +10,7 @@
   --backgroundColor: #f5f5f5;
   --primaryTextColor: grey;
   --buttonColor: rgb(179, 153, 6);
-  --font-stack-header: 'Montserrat', helvetica, arial, sans-serif;
+  --font-stack-header: "Montserrat", helvetica, arial, sans-serif;
 }
 
 html {
@@ -18,14 +18,13 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  width: 100%;
-  /* overflow: hidden; */
+  overflow-x: hidden;
   text-align: center;
   font-size: 16px;
   background-color: var(--backgroundColor);
@@ -66,25 +65,94 @@ a:hover {
   box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);
 }
 
-
 /*--------------------------------------------------------------
                   # FOOTER
 --------------------------------------------------------------*/
 .footer {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-shadow: 0px 0px 0px #000000;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--primaryTextColor);
   background-color: var(--primaryColor);
 }
+.footer a {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
+}
+.footer a:hover {
+  color: var(--buttonColor);
+  text-decoration: none;
+  transition: all 0.4s;
+}
+.footerContent {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.footerContent > p {
+  margin-bottom: 0;
+}
+.socials {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.socials > li {
+  padding: 1rem;
+  list-style: none;
+  color: rgb(50, 50, 50);
+  margin: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid rgb(50, 50, 50);
+  border-radius: 50%;
+  background: var(--primaryColor);
+  transition: all 0.4s;
+}
+.socials > li:hover {
+  color: var(--buttonColor);
+  border-color: linear-gradient(to left, var(--buttonColor), #ed6663);
+  transform: scale(1.1);
+}
 
+/*--------------------------------------------------------------
+                  # SCROLL TO TOP
+--------------------------------------------------------------*/
 
+.scrollTop {
+  position: fixed;
+  width: 100%;
+  bottom: 20px;
+  align-items: center;
+  height: 20px;
+  justify-content: left;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.3s;
+  transition: opacity 0.4s;
+  opacity: 0.6;
+  margin-left: -50px;
+  left: 50%;
+}
+
+.scrollTop:hover {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
 
 /*--------------------------------------------------------------
                   # HOME
 --------------------------------------------------------------*/
-#home{
+#home {
   min-height: 100vh;
   text-align: center;
 }
@@ -93,28 +161,30 @@ a:hover {
 .header {
   padding: 60px;
   text-align: center;
-   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("../images/banner1.jpeg") no-repeat center fixed;
   background-size: cover;
   color: white;
   font-size: 30px;
   min-height: 45vh;
 }
-.header h1{
+.header h1 {
   text-transform: uppercase;
-font-size: 3rem;
-font-weight: 600;
-text-shadow: 2px 2px 2px grey;
+  font-size: 3rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 2px grey;
 }
-.header h2{
-font-size: 1.5rem;
+.header h2 {
+  font-size: 1.5rem;
 }
-.header p{
+.header p {
   margin-top: 1.5rem;
   font-size: 1rem;
 }
 /* Page Content */
-.content {padding:20px;}
+.content {
+  padding: 1rem;
+}
 
 #notifyToast {
   color: #fff;
@@ -124,8 +194,6 @@ font-size: 1.5rem;
   border: 1px solid var(--buttonColor);
   background-color: var(--primaryColor);
 }
-
-
 
 /*--------------------------------------------------------------
                   #     SUBSCRIPTION FORM
@@ -180,18 +248,18 @@ label.fcf-label {
   margin-bottom: 0.5rem;
 }
 #fcf-button {
-  transition: .5s;
+  transition: 0.5s;
   border: none;
   outline: 0;
   display: inline-block;
   padding: 10px 25px;
   font-size: 1rem;
-  background-color: transparent;
+  background-color: var(--primaryColor);
   text-align: center;
   cursor: pointer;
   color: white;
   border-radius: 0 0.7rem;
-  box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);  
+  box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);
 }
 #fcf-button:hover {
   -ms-transform: scale(1.1); /* IE 9 */
@@ -209,39 +277,41 @@ label.fcf-label {
   margin-top: 0.5rem;
 }
 
-
-
 /*--------------------------------------------------------------
                   #     ARTICLE CARDS
 --------------------------------------------------------------*/
 
-
 .movieCard {
-	background-size: contain;
-	background-repeat: no-repeat;
-	width:100%;
-	max-width: 800px;
-	height: 100%;
-	min-height: 300px;
-	display: block;
-	margin: 8vh auto;
-	border-radius: 8px;
-	box-shadow: 0px 8px 12px 0px rgba(0,0,0,0.25);
-	position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  min-height: 300px;
+  display: block;
+  margin: 8vh auto;
+  border-radius: 8px;
+  box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.25);
+  position: relative;
   background-image: url(https://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/t/58d86b3db3db2b57ce8f2986/1490578241899/?format=2500w);
 
   background-color: #dce1e5;
-  color:#cfd6e1;
+  color: #cfd6e1;
   line-height: 1.5;
-	font-weight: 400;
-	overflow-x: hidden;
+  font-weight: 400;
+  overflow-x: hidden;
 }
 
-.overlay{
-  width:100%;
+.overlay {
+  width: 100%;
   height: 100%;
   border-radius: 8px;
-  background: linear-gradient(to right, rgba(42,159,255,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
+  background: linear-gradient(
+    to right,
+    rgba(42, 159, 255, 0.2) 0%,
+    rgba(33, 33, 32, 1) 60%,
+    rgba(33, 33, 32, 1) 100%
+  );
   background-blend-mode: multiply;
   position: absolute;
   top: 0;
@@ -249,71 +319,77 @@ label.fcf-label {
   right: 0;
   left: 0;
 }
-.cardContent{
+.cardContent {
   width: 100%;
-  max-width:370px;
+  /* max-width:370px; */
+  max-width: 400px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  position:relative;
+  position: relative;
   float: right;
   padding-right: 1.2em;
   padding-bottom: 1em;
 }
 .cardTitle {
   color: #ffffff;
-  margin: .25em;
-  opacity: .75;
+  margin: 0.2em;
+  opacity: 0.75;
   text-align: center;
   font-family: var(--font-stack-header);
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	line-height: 1;
-	font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+  font-weight: 400;
 }
 .articleInfo {
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: .8em;
+  font-size: 0.9em;
   color: var(--buttonColor);
   line-height: 1;
-  margin: .25em;
-  font-weight: 700;
+  font-weight: 800;
+  text-shadow: #f5f5f5;
 }
-.articleDesc{
-		font-weight: 300;
-		opacity: .9;
-		margin-bottom: 2em;
+.articleDesc {
+  font-weight: 300;
+  opacity: 0.9;
+  margin-bottom: 2em;
 }
 
-#btn{
-  padding: .5rem 2rem;
-	background-color: rgba(255,255,255,.4);
-	color: rgba(255,255,255,1);
+#btn {
+  padding: 0.5rem 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
 }
 
 @media screen and (max-width: 1000px) {
-  .cardContent{
-  width: 50%;
+  .cardContent {
+    width: 50%;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .movieCard{
+  .movieCard {
     width: 95%;
     max-width: 95%;
   }
 }
 @media screen and (max-width: 600px) {
-  .movieCard{
-  background-position:50% 0%;
-  background-size: cover;
-  height: 400px;
+  .movieCard {
+    background-position: 50% 0%;
+    background-size: cover;
+    height: 400px;
   }
-  .overlay{
-    background: linear-gradient(to bottom, rgba(42,159,255,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
+  .overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(42, 159, 255, 0.2) 0%,
+      rgba(33, 33, 32, 1) 60%,
+      rgba(33, 33, 32, 1) 100%
+    );
   }
-  .cardContent{
+  .cardContent {
     margin-top: 4.2em;
     width: 100%;
     float: inherit;
@@ -326,5 +402,5 @@ label.fcf-label {
   -ms-transform: scale(1.05); /* IE 9 */
   -webkit-transform: scale(1.05); /* Safari 3-8 */
   transform: scale(1.05);
-  transition: .6s;
+  transition: 0.6s;
 }

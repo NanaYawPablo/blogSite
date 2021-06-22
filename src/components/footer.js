@@ -1,21 +1,32 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
+import { Facebook, Linkedin, Twitter } from 'react-bootstrap-icons';
 
 const Footer = () => {
     return (
-        <div className="row">
-            <div className="col-md-12">
+        <Row>
+            <Col md={12}>
                 <Navbar className="footer"
                     // fixed="bottom"
                     expand='lg' bg='' variant='dark'>
                     <Container fluid>
-                        <Nav className="mr-auto">
-                            <p>&copy; 2021 Isaac Afrifa</p>
-                        </Nav>
 
+                        <div className="footerContent mt-4">
+                                    <div className="socials">
+                                        <li><Twitter size={24}/></li>
+                                        <li><Linkedin size={24}/></li>
+                                        <li><Facebook size={24}/></li>
+                                    </div>
+                             
+                           <p>&copy; 2021 Selim Van Lare</p> 
+                           <p>Built by <a href="https://www.isaacafrifa.com" target="_blank" rel="noopener noreferrer">
+                                Yaw Afrifa</a></p>
+                           
+                          
+                        </div>
                     </Container>
                 </Navbar>
-            </div>
-        </div>
+            </Col>
+        </Row>
     );
 }
 

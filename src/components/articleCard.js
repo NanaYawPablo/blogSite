@@ -1,4 +1,4 @@
-import {  Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { Link45deg } from "react-bootstrap-icons";
 
 
@@ -10,9 +10,16 @@ const ArticleCard = () => {
                     <div className="cardContent">
                         <h1 className="cardTitle">
                             BLADE RUNNER </h1>
-                        <span className="articleInfo">
-                            LIFESTYLE
-                        </span>
+                        {/* <span className="articleInfo"> LIFESTYLE || AUTHOR || DATE </span> */}
+                        <Container fluid>
+                            <Row>
+                                <Col md={{ span: 12 }}>
+                                    <span className="articleInfo">
+                                        TAG || AUTHOR || DATE
+                                     </span>
+                                </Col>
+                            </Row>
+                        </Container>
                         <p className="articleDesc">
                             A blade runner must pursue and try to terminate four replicants who stole a ship in space and have returned to Earth to find their creator.
                         </p>

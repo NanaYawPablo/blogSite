@@ -6,23 +6,21 @@ import Home from './pages/home'
 
 function App() {
   return (
-<Router>
-          <div 
-          // className="app"
-          >
-            <Navbar />
-            <Switch>
-              <Route exact path='/'>
-                <Home />
-              </Route>
-              {/* <Route exact path={PORTFOLIO_URL} component={Portfolio} /> */}
-              {/* <Route path="*">
+    <Router>
+
+      <Navbar />
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        {/* <Route exact path={PORTFOLIO_URL} component={Portfolio} /> */}
+        {/* <Route path="*">
                 <Page404 />
               </Route> */}
-            </Switch>
-            <Footer />
-          </div>
-        </Router>
+      </Switch>
+      <Footer />
+
+    </Router>
   );
 }
 
