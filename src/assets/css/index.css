@@ -404,3 +404,26 @@ label.fcf-label {
   transform: scale(1.05);
   transition: 0.6s;
 }
+
+
+
+/*--------------------------------------------------------------
+                  # ABOUT PAGE
+--------------------------------------------------------------*/
+#about {
+  min-height: 82vh;
+  text-align: center;
+  color: var(--primaryTextColor);
+}
+
+
+
+
+/*--------------------------------------------------------------
+                  # 404 PAGE
+--------------------------------------------------------------*/
+#page404 {
+  min-height: 82vh;
+  text-align: center;
+  color: var(--primaryTextColor);
+}

@@ -11,7 +11,6 @@ const Home = () => {
 
             <div className="header">
                 <h1>Selim's Blog</h1>
-                <h2>Welcome</h2>
                 <p>Want to get notified of new posts?</p>
                 <SubscriptionForm />
             </div>
