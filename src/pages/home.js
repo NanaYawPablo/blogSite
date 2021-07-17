@@ -1,8 +1,9 @@
 import ParticlesBg from 'particles-bg'
-import { Container, Row , Button} from 'react-bootstrap'
+import { Container, Row, Button } from 'react-bootstrap'
 import ArticleCard from '../components/articleCard'
 import SubscriptionForm from '../components/subscriptionform'
 import ScrollToTop from '../components/scrollToTop'
+import AllPosts from '../components/allPosts'
 
 const Home = () => {
     return (
@@ -23,24 +24,26 @@ const Home = () => {
                 <p>Some content blablabla</p> */}
 
                 <Container fluid>
-                    <Row>
+                    {/* <Row>
                         <div className="col-12 col-md-5 offset-md-1">
-                            <ArticleCard />
+                            <ArticleCard  title='my title'  date='my date'/>
                         </div>
                         <div className="col-12 col-md-5 ">
-                            <ArticleCard />
+                            <ArticleCard  title='my title'  date='my date'/>
                         </div>
-                    </Row>
+                    </Row> */}
+
+                    <AllPosts />
 
                 </Container>
 
                 <div>
-                                <Button type="submit" id="fcf-button"
-                                    className="fcf-btn">
-                                    {/* {isLoading ? 'Loading…' : 'Older Posts'} */}
-                                    Older Posts
-                                </Button>
-                            </div>
+                    <Button type="submit" id="fcf-button"
+                        className="fcf-btn">
+                        {/* {isLoading ? 'Loading…' : 'Older Posts'} */}
+                        Older Posts
+                    </Button>
+                </div>
             </section>
 
         </div>
