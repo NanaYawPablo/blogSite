@@ -463,14 +463,53 @@ label.fcf-label {
                   # PRELOADER
 --------------------------------------------------------------*/
   #preloader{
-    /* position:fixed;
-    z-index: 1;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 100%; */
     animation: fadeIn 0.3s;
     transition: opacity 0.4s;
   }
 
 
+
+/*--------------------------------------------------------------
+                  # BLOG DETAILS PAGE
+--------------------------------------------------------------*/
+  /* Header */
+.detailsHeader {
+  padding: 60px;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../images/banner1.jpeg") no-repeat center fixed;
+  background-size: cover;
+  color: white;
+  font-size: 30px;
+  min-height: 35vh;
+}
+.detailsHeader h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 2px black;
+  margin-top:5%;
+}
+
+.detailsHeader p {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+/* Page Content */
+.detailsContent {
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+
+@media screen and (min-width: 600px) {
+  .detailsContent p {
+    text-align: left;
+  }
+  .detailsContent #author{
+    text-align: right;
+  }
+  #blogDesc{
+    margin-top: 1rem;
+  }
+}

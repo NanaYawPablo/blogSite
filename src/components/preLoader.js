@@ -1,11 +1,10 @@
+import { Heart } from 'react-spinners-css';
 
 const PreLoader = () => {
     return (
         <div id="preloader">
-            <div id="prespinner">
-               <h3>Loading please wait...</h3>
-               <br/>
-            </div>
+            <Heart color="grey" />
+            <br/>
         </div>
     );
 }
