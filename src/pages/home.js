@@ -1,9 +1,9 @@
 import ParticlesBg from 'particles-bg'
-import { Container, Row, Button } from 'react-bootstrap'
-import ArticleCard from '../components/articleCard'
+import { Container, Button } from 'react-bootstrap'
 import SubscriptionForm from '../components/subscriptionform'
 import ScrollToTop from '../components/scrollToTop'
-import AllPosts from '../components/allPosts'
+import BlogList from '../components/BlogList'
+import { samplePosts } from "../constants/samplePosts";
 
 const Home = () => {
     return (
@@ -24,16 +24,10 @@ const Home = () => {
                 <p>Some content blablabla</p> */}
 
                 <Container fluid>
-                    {/* <Row>
-                        <div className="col-12 col-md-5 offset-md-1">
-                            <ArticleCard  title='my title'  date='my date'/>
-                        </div>
-                        <div className="col-12 col-md-5 ">
-                            <ArticleCard  title='my title'  date='my date'/>
-                        </div>
-                    </Row> */}
 
-                    <AllPosts />
+                    <div class="allPostsRow">
+                        <BlogList samplePosts={samplePosts} />
+                    </div>
 
                 </Container>
 
