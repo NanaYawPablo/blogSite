@@ -16,7 +16,7 @@ const BlogList = ({samplePosts}) => {
                 allPosts && (
                     allPosts.map(post => (
                         <div className="postPreview" key={post.id}>
-                            <Link to={`/blogs/${post.id}`}>
+                            <Link to={`/blogs/${post.id}/${post.title}`}>
                             <ArticleCard
                                 title={post.title} date={post.date}
                                 tag={post.tag} author={post.author}
