@@ -33,8 +33,8 @@ const BlogDetails = () => {
                         </Col>
                     </Row>
 
-                    <h4><span style={{ margin: "5px" }} class="badge badge-pill badge-secondary">Tag 1</span>
-                        <span style={{ margin: "5px" }} class="badge badge-pill badge-secondary">Category 2</span>
+                    <h4><span style={{ margin: "5px" }} className="badge badge-pill badge-secondary">Category 1</span>
+                        <span style={{ margin: "5px" }} className="badge badge-pill badge-secondary">Category 2</span>
                     </h4>
 
                 </Container>

@@ -21,10 +21,9 @@ const ArticleCard = ({ title, date, tag, author, description, image }) => {
                         </Container>
                         <p className="articleDesc">
                             {description}
-                            A blade runner must pursue and try 
-                            A blade runner must pursue and try 
-                            A blade runner must pursue and try to terminate four replicants who stole a ship in space and have returned to Earth to find their creator.
-                        </p>
+                           Labore incididunt excepteur voluptate sit ad culpa ipsum pariatur mollit reprehenderit culpa. Enim excepteur anim eiusmod qui 
+                           commodo in fugiat sunt consectetur ut do anim. Labore exercitation sit consectetur nisi laboris. Nisi dolor enim officia voluptate id anim et anim veniam duis. 
+                           </p>
                         <Button id="fcf-button" href="https://commons.erau.edu/jdfsl/vol15/iss1/2/" target="_blank" rel="noopener noreferrer">
                             <Link45deg /> Read More...</Button>
                     </div>

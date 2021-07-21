@@ -4,6 +4,7 @@ import SubscriptionForm from '../components/subscriptionform'
 import ScrollToTop from '../components/scrollToTop'
 import BlogList from '../components/BlogList'
 import { samplePosts } from "../constants/samplePosts";
+import CategoryList from '../components/categoryList'
 
 const Home = () => {
     return (
@@ -18,13 +19,16 @@ const Home = () => {
 
             {/* Scroll Button */}
             <ScrollToTop />
+            
+            {/* All Categories Component */}
+            <CategoryList />
 
             <section className="content">
                 {/* <h1>Content</h1>
                 <p>Some content blablabla</p> */}
 
                 <Container fluid>
-
+               
                     <div class="allPostsRow">
                         <BlogList samplePosts={samplePosts} />
                     </div>

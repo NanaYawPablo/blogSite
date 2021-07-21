@@ -181,10 +181,18 @@ a:hover {
   margin-top: 1.5rem;
   font-size: 1rem;
 }
+/* Categories List */
+#categorylist{
+  margin-top: 1rem;
+}
+#categorylist span{
+  margin: 5px;
+}
+
 /* Page Content */
 .content {
   padding: 1rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 #notifyToast {
@@ -368,9 +376,11 @@ label.fcf-label {
   text-align: center;
   font-family: var(--font-stack-header);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   line-height: 1;
   font-weight: 400;
+  font-size: x-large;
+  padding: .4em;
 }
 .articleInfo {
   text-transform: uppercase;
