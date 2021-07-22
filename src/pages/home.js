@@ -5,6 +5,8 @@ import ScrollToTop from '../components/scrollToTop'
 import BlogList from '../components/BlogList'
 import { samplePosts } from "../constants/samplePosts";
 import CategoryList from '../components/categoryList'
+import { Link } from 'react-router-dom'
+import {BLOGS_URL} from '../constants/urls'
 
 const Home = () => {
     return (
@@ -29,18 +31,20 @@ const Home = () => {
 
                 <Container fluid>
                
-                    <div class="allPostsRow">
+                    <div className="allPostsRow">
                         <BlogList samplePosts={samplePosts} />
                     </div>
 
                 </Container>
 
                 <div>
+                    <Link to={BLOGS_URL}>
                     <Button type="submit" id="fcf-button"
                         className="fcf-btn">
                         {/* {isLoading ? 'Loading…' : 'Older Posts'} */}
-                        Older Posts
+                        Older Posts 
                     </Button>
+                    </Link>
                 </div>
             </section>
 

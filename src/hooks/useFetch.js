@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
+// import axios from "axios";
 
 const useFetch = (samplePosts) => {
-    // const RSS_URL='https://adzovanlare.wordpress.com/feed/'
-
+   
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -11,7 +11,7 @@ const useFetch = (samplePosts) => {
     useEffect(() => {
         // const abortController = new AbortController()
 
-        // axios.get(RSS_URL)
+        // axios.get(URL)
         //     .then(function (response) { 
         //     console.log(response)
         //     })
