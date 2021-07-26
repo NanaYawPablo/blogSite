@@ -11,10 +11,9 @@ const ArticleCard = ({ title, date, tags, description, image }) => {
               <h5>
                 {tags &&
                   tags.map((category) => (
-                    <span
+                    <span key={category.id}
                       style={{ margin: "5px", textTransform: "capitalize" }}
-                      className="badge badge-pill badge-dark"
-                    >
+                      className="badge badge-pill badge-dark">
                       {category.name}
                     </span>
                   ))}

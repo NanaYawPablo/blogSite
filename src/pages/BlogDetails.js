@@ -34,7 +34,7 @@ const BlogDetails = () => {
                         <p id="author">By: {
                             post.authors.map(
                                 author => (
-                                    <span style={{ textTransform: "capitalize" }}>|<b> {author.name} </b>|</span>
+                                    <span key={author.id} style={{ textTransform: "capitalize" }}>|<b> {author.name} </b>|</span>
                                 )
                             )}
                         </p>
@@ -48,7 +48,7 @@ const BlogDetails = () => {
 
                             <h4>{post.categories.map(
                                 category =>
-                                    <span style={{ margin: "5px", textTransform: "capitalize" }} className="badge badge-pill badge-secondary">{category.name}</span>
+                                    <span key={category.id} style={{ margin: "5px", textTransform: "capitalize" }} className="badge badge-pill badge-secondary">{category.name}</span>
                             )}
                             </h4>
 

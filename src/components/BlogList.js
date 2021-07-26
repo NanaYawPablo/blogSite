@@ -7,7 +7,7 @@ import PreLoader from "./preLoader";
 
 const BlogList = ({ url }) => {
   const { data: allPosts, isLoading, error } = useFetch(url);
-   console.log(allPosts);
+  //  console.log(allPosts);
 
   return (
     <div>
