@@ -1,45 +1,65 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { EmojiFrown } from "react-bootstrap-icons";
 import { useParams } from "react-router-dom";
+import PreLoader from "../components/preLoader";
+import { BACKEND_POSTS_URL, BACKEND_URL } from "../constants/urls";
+import useFetch from "../hooks/useFetch";
 
 const BlogDetails = () => {
     const { id, title } = useParams()
-    const backgroundImage = 'https://bitbucket.org/mrBlo/weather-app/raw/f7a716eb0a9c9f8b37eb67f4c14a26d466ac21e2/src/assets/images/day.jpeg'
+    const { data: post, isLoading, error } = useFetch(BACKEND_POSTS_URL + '/' + id)
+    console.log(post);
 
     return (
         <div id="about">
-            <div className="detailsHeader" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                <h1>Title : {title}</h1>
-                <p>ID : {id}</p>
-            </div>
 
-            <section className="detailsContent">
+            {error &&
+                <div style={{ margin: "2rem 0" }}>
+                    <h4>Blog post couldn't be loaded <EmojiFrown /></h4>
+                    <p>({error})</p>
+                </div>}
 
-                <Container fluid>
-                    <Row>
-                        <Col md>
-                            <p id="author">Author: Selim Van Lare</p>
-                        </Col>
-                        <Col md>
-                            <p>Date: 25TH JULY 2098</p>
-                        </Col>
-                    </Row>
+            {isLoading && (<PreLoader />)}
 
-                    <Row>
-                        <Col md={{ span: 8, offset: 2 }}>
-                            <p id="blogDesc">Enim ea fugiat minim labore occaecat nisi laborum ut cillum labore laborum voluptate esse.
-                                Proident amet ad veniam ad non fugiat qui nulla nulla est consequat aliquip. Sint consequat laboris pariatur minim eu quis.
-                                Ad aliquip irure ipsum cillum officia exercitation nisi et tempor dolor eu est tempor. Et proident irure laborum occaecat est
-                                ad in veniam enim dolore cillum labore. Incididunt nulla elit incididunt nulla ipsum irure adipisicing et consectetur excepteur excepteur. Nulla ut irure officia ea duis reprehenderit nostrud duis.</p>
-                        </Col>
-                    </Row>
+            {post && (
+                <div>
 
-                    <h4><span style={{ margin: "5px" }} className="badge badge-pill badge-secondary">Category 1</span>
-                        <span style={{ margin: "5px" }} className="badge badge-pill badge-secondary">Category 2</span>
-                    </h4>
+                    <section className="detailsHeader" style={{ backgroundImage: `url(${BACKEND_URL}${post.image.url})` }}>
+                        <h1>{post.title}</h1>
+                    </section>
 
-                </Container>
+                    <section className="detailsContent">
+                        <Container fluid>
+                        <p>Pub Date: {post.published_at.toString()}</p>
+                        <p id="author">By: {
+                            post.authors.map(
+                                author => (
+                                    <span style={{ textTransform: "capitalize" }}>|<b> {author.name} </b>|</span>
+                                )
+                            )}
+                        </p>
+                            <Row>
+                                <Col md={{ span: 8, offset: 2 }}>
+                                    <p id="blogDesc">
+                                        {post.content}
+                                    </p>
+                                </Col>
+                            </Row>
 
-            </section>
+                            <h4>{post.categories.map(
+                                category =>
+                                    <span style={{ margin: "5px", textTransform: "capitalize" }} className="badge badge-pill badge-secondary">{category.name}</span>
+                            )}
+                            </h4>
+
+                            {/* <h4><span style={{ margin: "5px" }} className="badge badge-pill badge-secondary">Category 1</span>
+                                <span style={{ margin: "5px" }} className="badge badge-pill badge-secondary">Category 2</span>
+                            </h4> */}
+                        </Container>
+                    </section>
+
+                </div>
+            )}
 
         </div>
     );

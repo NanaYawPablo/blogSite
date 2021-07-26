@@ -3,10 +3,10 @@ import { Container, Button } from 'react-bootstrap'
 import SubscriptionForm from '../components/subscriptionform'
 import ScrollToTop from '../components/scrollToTop'
 import BlogList from '../components/BlogList'
-import { samplePosts } from "../constants/samplePosts";
+// import { samplePosts } from "../constants/samplePosts";
 import CategoryList from '../components/categoryList'
 import { Link } from 'react-router-dom'
-import {BLOGS_URL} from '../constants/urls'
+import {BACKEND_CATEGORIES_URL, BACKEND_POSTS_URL, BLOGS_URL} from '../constants/urls'
 
 const Home = () => {
     return (
@@ -23,7 +23,7 @@ const Home = () => {
             <ScrollToTop />
             
             {/* All Categories Component */}
-            <CategoryList />
+            <CategoryList url={BACKEND_CATEGORIES_URL} />
 
             <section className="content">
                 {/* <h1>Content</h1>
@@ -32,7 +32,7 @@ const Home = () => {
                 <Container fluid>
                
                     <div className="allPostsRow">
-                        <BlogList samplePosts={samplePosts} />
+                        <BlogList url={BACKEND_POSTS_URL} />
                     </div>
 
                 </Container>

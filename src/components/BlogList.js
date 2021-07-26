@@ -1,34 +1,42 @@
+import { EmojiFrown } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import ArticleCard from "./articleCard";
-import PreLoader from './preLoader'
+import PreLoader from "./preLoader";
 // import axios from "axios";
 
-const BlogList = ({samplePosts}) => {
+const BlogList = ({ url }) => {
+  const { data: allPosts, isLoading, error } = useFetch(url);
+   console.log(allPosts);
 
-    const { data: allPosts, isLoading, error } = useFetch(samplePosts)
-
-    return (
+  return (
+    <div>
+      {error && (
         <div>
-            {error && <div><h3> {error} </h3></div>}
-            {isLoading && (<PreLoader />)}
-            {
-                allPosts && (
-                    allPosts.map(post => (
-                        <div className="postPreview" key={post.id}>
-                            <Link to={`/blogs/${post.id}/${post.title}`}>
-                            <ArticleCard
-                                title={post.title} date={post.date}
-                                tag={post.tag} author={post.author}
-                                description={post.description} image={post.image}
-                            />
-                            </Link>
-                        </div>)
-                    )
-                )
-            }
+          <h4>
+            Blog posts couldn't be loaded <EmojiFrown />
+          </h4>
+          <p>({error})</p>
+          <br />
         </div>
-    );
-}
+      )}
+      {isLoading && <PreLoader />}
+      {allPosts &&
+        allPosts.map((post) => (
+          <div className="postPreview" key={post.id}>
+            <Link to={`/blogs/${post.id}/${post.title}`}>
+              <ArticleCard
+                title={post.title}
+                date={post.published_at}
+                tags={post.categories}
+                description={post.description}
+                image={post.image}
+              />
+            </Link>
+          </div>
+        ))}
+    </div>
+  );
+};
 
 export default BlogList;

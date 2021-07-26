@@ -1,40 +1,55 @@
 import { useState, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 
-const useFetch = (samplePosts) => {
-   
+const useFetch = (url) => {
+    // const useFetch = (samplePosts) => {  
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
 
+const clearObjects =()=>{
+    setError(null)
+    setData(null)
+}
 
     useEffect(() => {
-        // const abortController = new AbortController()
 
-        // axios.get(URL)
-        //     .then(function (response) { 
-        //     console.log(response)
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     })
-        //     .then(function () {   // always executed
-        //         setIsLoading(false)
-        //     });
-
+        clearObjects()
+        const source = axios.CancelToken.source();
+        
         setTimeout(
             () => (
-                // eslint-disable-next-line no-sequences
-                setData(samplePosts),
-                setIsLoading(false),
-                setError(null)
+        axios.get(url,{ 
+            cancelToken: source.token 
+        })
+            .then(function (response) { 
+                setData(response.data)
+                setIsLoading(false)
+            })
+            .catch(function (error) {
+                    if (axios.isCancel(error)){
+                        console.log("Fetch aborted!");  
+                    }
+                    else{
+                    console.log(error.response);
+                    // setError("Oops! An error occurred.")
+                    setError(error.message)
+                    setIsLoading(false)
+                }
+            })
             ), 2000)
+
+        // setTimeout(() => (
+        //         setData(samplePosts),
+        //         setIsLoading(false),
+        //         setError(null)
+        //     ), 2000)
 
         //useEffect cleanup
         return () => {
-            console.log("Clean up")
+            source.cancel();
         }
-    }, [samplePosts])
+    }, [url])
 
     return { data, isLoading, error }
 }
