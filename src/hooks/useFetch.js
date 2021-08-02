@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const useFetch = (url) => {
-    // const useFetch = (samplePosts) => {  
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -38,12 +37,6 @@ const clearObjects =()=>{
                 }
             })
             ), 2000)
-
-        // setTimeout(() => (
-        //         setData(samplePosts),
-        //         setIsLoading(false),
-        //         setError(null)
-        //     ), 2000)
 
         //useEffect cleanup
         return () => {

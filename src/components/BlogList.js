@@ -1,13 +1,13 @@
+import { useQuery } from "@apollo/client";
 import { EmojiFrown } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
 import ArticleCard from "./articleCard";
 import PreLoader from "./preLoader";
-// import axios from "axios";
 
-const BlogList = ({ url }) => {
-  const { data: allPosts, isLoading, error } = useFetch(url);
-  //  console.log(allPosts);
+
+const BlogList = ({ query }) => {
+  const { data: latestPosts, isLoading, error } = useQuery(query) //using graphQL
+  // console.log(latestPosts);
 
   return (
     <div>
@@ -16,13 +16,13 @@ const BlogList = ({ url }) => {
           <h4>
             Blog posts couldn't be loaded <EmojiFrown />
           </h4>
-          <p>({error})</p>
+          <p>({error.message})</p>
           <br />
         </div>
       )}
       {isLoading && <PreLoader />}
-      {allPosts &&
-        allPosts.map((post) => (
+      {latestPosts &&
+        latestPosts.posts.map((post) => (
           <div className="postPreview" key={post.id}>
             <Link to={`/blogs/${post.id}/${post.title}`}>
               <ArticleCard

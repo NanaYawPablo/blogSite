@@ -1,9 +1,11 @@
+import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+// import useFetch from "../hooks/useFetch";
 
-const CategoryList = ({ url }) => {
+const CategoryList = ({ query }) => {
 
-    const { data: allCategories, isLoading, error } = useFetch(url)
+    // const { data: allCategories, isLoading, error } = useFetch(url) // disabling rest calls usinng graphQL now
+    const { data: allCategories, isLoading, error } = useQuery(query)
     // console.log(allCategories);
 
     return (
@@ -11,7 +13,7 @@ const CategoryList = ({ url }) => {
             {error &&
                 <div>
                     <h6>Categories couldn't be loaded</h6>
-                    <p>({error})</p>
+                  <p>({error.message})</p>
                     <br />
                 </div>}
             {isLoading && <p>Loading Categories...</p>}
@@ -19,7 +21,7 @@ const CategoryList = ({ url }) => {
             {allCategories && (
                 <div>
                     <h4>
-                        {allCategories.map(category => (
+                        {allCategories.categories.map(category => (
                           
                             <Link  key={category.id} to={`/categories/${category.id}`}>
                                 <span className="badge badge-secondary">{category.name}</span>

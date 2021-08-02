@@ -3,10 +3,46 @@ import { Container, Button } from 'react-bootstrap'
 import SubscriptionForm from '../components/subscriptionform'
 import ScrollToTop from '../components/scrollToTop'
 import BlogList from '../components/BlogList'
-// import { samplePosts } from "../constants/samplePosts";
 import CategoryList from '../components/categoryList'
 import { Link } from 'react-router-dom'
-import {BACKEND_CATEGORIES_URL, BACKEND_POSTS_URL, BLOGS_URL} from '../constants/urls'
+import { BLOGS_URL } from '../constants/urls'
+//GraphQL import
+import { gql } from '@apollo/client'
+
+const ALL_CATEGORIES = gql`
+  # Getting all categories and sorting by name asc
+  query GetAllCategories {
+    categories(sort: "name:asc") {
+      id
+      name
+    }
+  }
+`;
+
+const LATEST_POSTS = gql`
+  # Getting latest two posts and sorting by id desc
+  query GetLatestPosts{
+    posts(limit:2 sort:"id:desc" ){
+      id
+      title
+      description
+      published_at
+      image{
+              url
+      }
+      authors{
+        name
+              avatar{
+                    url
+        }
+      }
+      categories{
+        id
+        name
+      }
+    }
+  }
+`;
 
 const Home = () => {
     return (
@@ -21,29 +57,29 @@ const Home = () => {
 
             {/* Scroll Button */}
             <ScrollToTop />
-            
+
             {/* All Categories Component */}
-            <CategoryList url={BACKEND_CATEGORIES_URL} />
+            <CategoryList query={ALL_CATEGORIES} />
 
             <section className="content">
                 {/* <h1>Content</h1>
                 <p>Some content blablabla</p> */}
 
                 <Container fluid>
-               
+
                     <div className="allPostsRow">
-                        <BlogList url={BACKEND_POSTS_URL} />
+                        <BlogList query={LATEST_POSTS} />
                     </div>
 
                 </Container>
 
                 <div>
                     <Link to={BLOGS_URL}>
-                    <Button type="submit" id="fcf-button"
-                        className="fcf-btn">
-                        {/* {isLoading ? 'Loading…' : 'Older Posts'} */}
-                        Older Posts 
-                    </Button>
+                        <Button type="submit" id="fcf-button"
+                            className="fcf-btn">
+                            {/* {isLoading ? 'Loading…' : 'Older Posts'} */}
+                            Older Posts
+                        </Button>
                     </Link>
                 </div>
             </section>

@@ -1,6 +1,34 @@
 import { Container } from "react-bootstrap";
 import BlogList from "../components/BlogList";
-import { BACKEND_POSTS_URL } from "../constants/urls";
+
+//GraphQL import
+import { gql } from '@apollo/client'
+
+const ALL_POSTS = gql`
+# Getting all posts and sorting by id desc
+query GetAllPosts{
+  posts(sort:"id:desc" ){
+    id
+    title
+    description
+    published_at
+    image{
+    		url
+    }
+    authors{
+      name
+			avatar{
+				  url
+      }
+    }
+    categories{
+	    id
+      name
+    }
+  }
+}
+
+`
 
 const Blogs = () => {
   return (
@@ -13,7 +41,7 @@ const Blogs = () => {
         </div>
         <Container fluid>
           <div className="allPostsRow">
-            <BlogList url={BACKEND_POSTS_URL} />
+            <BlogList query={ALL_POSTS} />
           </div>
         </Container>
       </div>
