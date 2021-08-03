@@ -6,43 +6,33 @@ import BlogList from '../components/BlogList'
 import CategoryList from '../components/categoryList'
 import { Link } from 'react-router-dom'
 import { BLOGS_URL } from '../constants/urls'
-//GraphQL import
-import { gql } from '@apollo/client'
+// import { gql } from '@apollo/client' //cos calling from external queries file
+import { ALL_CATEGORIES, LATEST_POSTS } from '../constants/queries'
 
-const ALL_CATEGORIES = gql`
-  # Getting all categories and sorting by name asc
-  query GetAllCategories {
-    categories(sort: "name:asc") {
-      id
-      name
-    }
-  }
-`;
-
-const LATEST_POSTS = gql`
-  # Getting latest two posts and sorting by id desc
-  query GetLatestPosts{
-    posts(limit:2 sort:"id:desc" ){
-      id
-      title
-      description
-      published_at
-      image{
-              url
-      }
-      authors{
-        name
-              avatar{
-                    url
-        }
-      }
-      categories{
-        id
-        name
-      }
-    }
-  }
-`;
+// const LATEST_POSTS = gql`
+//   # Getting latest two posts and sorting by id desc
+//   query GetLatestPosts{
+//     posts(limit:2 sort:"id:desc" ){
+//       id
+//       title
+//       description
+//       published_at
+//       image{
+//               url
+//       }
+//       authors{
+//         name
+//               avatar{
+//                     url
+//         }
+//       }
+//       categories{
+//         id
+//         name
+//       }
+//     }
+//   }
+// `;
 
 const Home = () => {
   return (

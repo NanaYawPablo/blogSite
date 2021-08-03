@@ -1,45 +1,8 @@
 import { Container } from "react-bootstrap";
 import BlogList from "../components/BlogList";
-//GraphQL import
-import { gql } from '@apollo/client'
 import CategoryList from "../components/categoryList";
+import { ALL_CATEGORIES, ALL_POSTS } from "../constants/queries";
 
-
-const ALL_CATEGORIES = gql`
-  # Getting all categories and sorting by name asc
-  query GetAllCategories {
-    categories(sort: "name:asc") {
-      id
-      name
-    }
-  }
-`;
-
-const ALL_POSTS = gql`
-# Getting all posts and sorting by id desc
-query GetAllPosts{
-  posts(sort:"id:desc" ){
-    id
-    title
-    description
-    published_at
-    image{
-    		url
-    }
-    authors{
-      name
-			avatar{
-				  url
-      }
-    }
-    categories{
-	    id
-      name
-    }
-  }
-}
-
-`
 
 const Blogs = () => {
   return (

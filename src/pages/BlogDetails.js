@@ -1,39 +1,14 @@
-import { gql, useQuery } from "@apollo/client";
+import { // gql, 
+    useQuery } from "@apollo/client";
 import { Container, Row, Col } from "react-bootstrap";
 import { EmojiFrown } from "react-bootstrap-icons";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import PreLoader from "../components/preLoader";
+import { GET_SINGLE_POST } from "../constants/queries";
 import { BACKEND_URL } from "../constants/urls";
 
 
-
-const GET_SINGLE_POST = gql` 
-# Getting single post
-query GetSinglePost($blogID: ID!){ #for other variable types=> $variableName: String! , $variableName: Int! etc.
-  post(id: $blogID) {
-    id
-    title
-    description
-    content
-    published_at
-    image {
-      url
-    }
-    authors {
-      id
-      name
-      avatar {
-        url
-      }
-    }
-    categories {
-      id
-      name
-    }
-  }
-}
-`;
 
 const BlogDetails = () => {
     const { id } = useParams()
