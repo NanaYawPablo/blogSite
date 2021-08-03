@@ -181,12 +181,23 @@ a:hover {
   margin-top: 1.5rem;
   font-size: 1rem;
 }
-/* Categories List */
-#categorylist {
+#categories p {
   margin-top: 1rem;
+  font-weight: bolder;
+  text-transform: capitalize;
+  display: inline-block;
+  color: var(--primaryTextColor);
 }
+.line {
+  width: 40px;
+  height: 0;
+  border: 1px solid #c4c4c4;
+  margin: 3px;
+  display: inline-block;
+}
+/* Categories List */
 #categorylist span {
-  margin: 5px;
+  margin-left: 0.4rem;
   animation: fadeIn 0.3s;
   text-transform: capitalize;
 }
@@ -485,10 +496,10 @@ label.fcf-label {
   padding: 60px;
   text-align: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("../images/banner1.jpeg") ;
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: cover;
+    url("../images/banner1.jpeg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   font-size: 30px;
   min-height: 40vh;
@@ -506,7 +517,7 @@ label.fcf-label {
   margin-top: 1.5rem;
   font-size: 1rem;
 }
-#author{
+#author {
   font-weight: 400;
 }
 
@@ -516,7 +527,7 @@ label.fcf-label {
   margin-top: 1rem;
 }
 
-@media screen and (min-width: 600px) { 
+@media screen and (min-width: 600px) {
   #blogDesc {
     margin-top: 1rem;
   }
@@ -529,15 +540,18 @@ label.fcf-label {
   margin: 1rem 1rem 4rem 1rem;
 }
 .templateHeader h1 {
-  font-weight: 400;
-  font-size: larger;
+  font-weight: 300;
+  font-size: large;
 }
 .templateHeader .title {
-  font-weight: 700;
+  font-weight: 800;
   font-size: xx-large;
   text-transform: capitalize;
 }
-
+.templateHeader p {
+  font-weight: 500;
+  font-size: .9rem;
+}
 
 /*--------------------------------------------------------------
                   # BLOGS PAGE

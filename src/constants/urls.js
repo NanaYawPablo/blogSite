@@ -2,7 +2,8 @@
 export const ABOUT_URL = "/about";
 export const BLOGS_URL = '/blogs'
 export const CATEGORY_URL = "/categories/:id";
-export const BLOG_URL = "/blogs/:id/:title"; //following stackOverflow's url format
+export const BLOG_URL = "/blogs/:id"; 
+// export const BLOG_URL = "/blogs/:id/:title"; //following stackOverflow's url format
 
 //backend urls
 export const BACKEND_URL = 'http://localhost:1337'

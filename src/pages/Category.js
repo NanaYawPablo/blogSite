@@ -55,6 +55,8 @@ const Category = () => {
           <div className="templateHeader">
             <h1>Category</h1>
             <h1 className="title">{categoryDetails.category.name}</h1>
+             <div class="line"></div>
+             
             {categoryDetails.category.posts.length === 1 ? (
               <p>{categoryDetails.category.posts.length} post</p>
             ) : (
@@ -65,7 +67,7 @@ const Category = () => {
             <div className="allPostsRow">
               {categoryDetails.category.posts.map((post) => (
                 <div className="postPreview" key={post.id}>
-                  <Link to={`/blogs/${post.id}/${post.title}`}>
+                  <Link to={`/blogs/${post.id}`}>
                     <ArticleCard
                       title={post.title}
                       date={post.published_at}

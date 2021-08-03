@@ -36,7 +36,7 @@ query GetSinglePost($blogID: ID!){ #for other variable types=> $variableName: St
 `;
 
 const BlogDetails = () => {
-    const { id, title } = useParams()
+    const { id } = useParams()
 
     const { data, isLoading, error } = useQuery(GET_SINGLE_POST, {
         variables: {

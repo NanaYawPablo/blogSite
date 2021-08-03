@@ -45,47 +45,49 @@ const LATEST_POSTS = gql`
 `;
 
 const Home = () => {
-    return (
-        <div id="home">
-            <ParticlesBg color="#e5c100" num={200} type="cobweb" bg={true} />
+  return (
+    <div id="home">
+      <ParticlesBg color="#e5c100" num={200} type="cobweb" bg={true} />
 
-            <div className="header">
-                <h1>Selim's Blog</h1>
-                <p>Want to get notified of new posts?</p>
-                <SubscriptionForm />
-            </div>
+      <div className="header">
+        <h1>Selim's Blog</h1>
+        <p>Want to get notified of new posts?</p>
+        <SubscriptionForm />
+      </div>
 
-            {/* Scroll Button */}
-            <ScrollToTop />
+      {/* Scroll Button */}
+      <ScrollToTop />
 
-            {/* All Categories Component */}
-            <CategoryList query={ALL_CATEGORIES} />
+      <section id="categories">
+        <div class="line"></div>
+        <p>Categories</p>
+        <div class="line"></div>
+        <CategoryList query={ALL_CATEGORIES} />
+      </section>
 
-            <section className="content">
-                {/* <h1>Content</h1>
-                <p>Some content blablabla</p> */}
 
-                <Container fluid>
+      <section className="content">
+        <Container fluid>
 
-                    <div className="allPostsRow">
-                        <BlogList query={LATEST_POSTS} />
-                    </div>
+          <div className="allPostsRow">
+            <BlogList query={LATEST_POSTS} />
+          </div>
 
-                </Container>
+        </Container>
 
-                <div>
-                    <Link to={BLOGS_URL}>
-                        <Button type="submit" id="fcf-button"
-                            className="fcf-btn">
-                            {/* {isLoading ? 'Loading…' : 'Older Posts'} */}
-                            Older Posts
-                        </Button>
-                    </Link>
-                </div>
-            </section>
-
+        <div>
+          <Link to={BLOGS_URL}>
+            <Button type="submit" id="fcf-button"
+              className="fcf-btn">
+              {/* {isLoading ? 'Loading…' : 'Older Posts'} */}
+              Older Posts
+            </Button>
+          </Link>
         </div>
-    );
+      </section>
+
+    </div>
+  );
 }
 
 export default Home;

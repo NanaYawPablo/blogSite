@@ -16,7 +16,7 @@ const BlogList = ({ query }) => {
           <h4>
             Blog posts couldn't be loaded <EmojiFrown />
           </h4>
-          <p>({error.message})</p>
+          <p>({error.message })</p>
           <br />
         </div>
       )}
@@ -24,7 +24,7 @@ const BlogList = ({ query }) => {
       {latestPosts &&
         latestPosts.posts.map((post) => (
           <div className="postPreview" key={post.id}>
-            <Link to={`/blogs/${post.id}/${post.title}`}>
+            <Link to={`/blogs/${post.id}`}>
               <ArticleCard
                 title={post.title}
                 date={post.published_at}
