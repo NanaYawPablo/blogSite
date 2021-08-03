@@ -37,7 +37,7 @@ const Category = () => {
           <div className="templateHeader">
             <h1>Category</h1>
             <h1 className="title">{categoryDetails.category.name}</h1>
-             <div class="line"></div>
+             <div className="line"></div>
              
             {categoryDetails.category.posts.length === 1 ? (
               <p>{categoryDetails.category.posts.length} post</p>
@@ -53,7 +53,7 @@ const Category = () => {
                     <ArticleCard
                       title={post.title}
                       date={post.published_at}
-                      // tags={post.categories}
+                      tags={post.categories}
                       description={post.description}
                       image={post.image}
                     />

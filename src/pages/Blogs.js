@@ -10,7 +10,7 @@ const Blogs = () => {
       <div id="template">
         <div className="templateHeader">
           <h1 className="title">Blog Posts</h1>
-          <div class="line"></div>
+          <div className="line"></div>
           <p>Filter blogs by category:</p>
           <CategoryList query={ALL_CATEGORIES} />
           {/* <p>No of Posts</p> */}

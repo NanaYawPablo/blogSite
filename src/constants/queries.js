@@ -109,6 +109,10 @@ query GetCategoryDetails($categoryID : ID!){
            image{
                  url
                 }
+                categories{
+                  id
+                  name
+                }
             }
   }
 }

@@ -9,30 +9,7 @@ import { BLOGS_URL } from '../constants/urls'
 // import { gql } from '@apollo/client' //cos calling from external queries file
 import { ALL_CATEGORIES, LATEST_POSTS } from '../constants/queries'
 
-// const LATEST_POSTS = gql`
-//   # Getting latest two posts and sorting by id desc
-//   query GetLatestPosts{
-//     posts(limit:2 sort:"id:desc" ){
-//       id
-//       title
-//       description
-//       published_at
-//       image{
-//               url
-//       }
-//       authors{
-//         name
-//               avatar{
-//                     url
-//         }
-//       }
-//       categories{
-//         id
-//         name
-//       }
-//     }
-//   }
-// `;
+
 
 const Home = () => {
   return (
@@ -49,9 +26,9 @@ const Home = () => {
       <ScrollToTop />
 
       <section id="categories">
-        <div class="line"></div>
+        <div className="line"></div>
         <p>Categories</p>
-        <div class="line"></div>
+        <div className="line"></div>
         <CategoryList query={ALL_CATEGORIES} />
       </section>
 

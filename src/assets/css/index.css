@@ -197,7 +197,7 @@ a:hover {
 }
 /* Categories List */
 #categorylist span {
-  margin-left: 0.4rem;
+  margin-left: 0.5rem;
   animation: fadeIn 0.3s;
   text-transform: capitalize;
 }
@@ -206,6 +206,23 @@ a:hover {
   -webkit-transform: scale(1.1); /* Safari 3-8 */
   transform: scale(1.1);
   transition: 0.3s;
+  color: var(--buttonColor);
+}
+#categorylist .badge {
+  transition: 0.5s;
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px 23px;
+  font-size: 1rem;
+  background-color: var(--primaryColor);
+  font-weight: normal;
+  opacity: 0.8;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  border-radius: 0 0.7rem;
+  box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);
 }
 
 /* Page Content */
