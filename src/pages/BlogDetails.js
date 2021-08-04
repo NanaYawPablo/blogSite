@@ -1,5 +1,6 @@
 import { // gql, 
     useQuery } from "@apollo/client";
+import moment from "moment";
 import { Container, Row, Col } from "react-bootstrap";
 import { EmojiFrown } from "react-bootstrap-icons";
 import ReactMarkdown from "react-markdown";
@@ -40,7 +41,7 @@ const BlogDetails = () => {
 
                     <section className="detailsContent">
                         <Container fluid>
-                            <p>Pub Date: {data.post.published_at.toString()}</p>
+                            <p>{moment(new Date(data.post.published_at.toString())).format('MMMM Do YYYY')}</p>                            
                             <p id="author">By: {
                                 data.post.authors.map(
                                     author => (

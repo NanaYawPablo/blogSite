@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Col, Container, Row } from "react-bootstrap";
 
 const ArticleCard = ({ title, date, tags, description, image }) => {
@@ -20,7 +21,7 @@ const ArticleCard = ({ title, date, tags, description, image }) => {
               </h5>
               <Row>
                 <Col md={{ span: 12 }}>
-                  <span className="articleInfo">{date}</span>
+                  <span className="articleInfo">{moment(new Date(date)).format('MMMM Do YYYY')}</span>
                 </Col>
               </Row>
               <p className="articleDesc">

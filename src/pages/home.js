@@ -4,7 +4,7 @@ import SubscriptionForm from '../components/subscriptionform'
 import ScrollToTop from '../components/scrollToTop'
 import BlogList from '../components/BlogList'
 import CategoryList from '../components/categoryList'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { BLOGS_URL } from '../constants/urls'
 // import { gql } from '@apollo/client' //cos calling from external queries file
 import { ALL_CATEGORIES, LATEST_POSTS } from '../constants/queries'
@@ -12,6 +12,12 @@ import { ALL_CATEGORIES, LATEST_POSTS } from '../constants/queries'
 
 
 const Home = () => {
+  let history = useHistory();
+
+const handleOlderPosts=()=>{
+  history.push(BLOGS_URL)
+}
+
   return (
     <div id="home">
       <ParticlesBg color="#e5c100" num={200} type="cobweb" bg={true} />
@@ -43,13 +49,13 @@ const Home = () => {
         </Container>
 
         <div>
-          <Link to={BLOGS_URL}>
-            <Button type="submit" id="fcf-button"
+          {/* <Link to={BLOGS_URL}> */}
+            <Button onClick={handleOlderPosts} id="fcf-button"
               className="fcf-btn">
               {/* {isLoading ? 'Loading…' : 'Older Posts'} */}
               Older Posts
             </Button>
-          </Link>
+          {/* </Link> */}
         </div>
       </section>
 
