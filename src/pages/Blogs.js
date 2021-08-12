@@ -4,7 +4,10 @@ import CategoryList from "../components/categoryList";
 import { ALL_CATEGORIES, ALL_POSTS } from "../constants/queries";
 
 
+
 const Blogs = () => {
+  
+
   return (
     <section id="about">
       <div id="template">
@@ -18,7 +21,7 @@ const Blogs = () => {
         </div>
         <Container fluid>
           <div className="allPostsRow">
-            <BlogList query={ALL_POSTS} />
+          <BlogList query={ALL_POSTS} />  
           </div>
         </Container>
       </div>

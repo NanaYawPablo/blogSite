@@ -5,9 +5,9 @@ import { gql } from '@apollo/client'
 /* -------------    GET QUERIES  ----------------    */
 
 export const ALL_POSTS = gql`
-# Getting all posts and sorting by id desc
+# Getting all posts and sorting by 'published_at' desc
 query GetAllPosts{
-  posts(sort:"id:desc" ){
+  posts(sort:"published_at:desc" ){
     id
     title
     description
@@ -30,9 +30,9 @@ query GetAllPosts{
 `;
 
 export const LATEST_POSTS = gql`
-# Getting latest two posts and sorting by id desc
+# Getting latest two posts and sorting by published_at desc
 query GetLatestPosts{
-  posts(limit:2 sort:"id:desc" ){
+  posts(limit:2 sort:"published_at:desc" ){
     id
     title
     description
@@ -95,13 +95,13 @@ query GetSinglePost($blogID: ID!){ #for other variable types=> $variableName: St
 `;
 
 export const GET_CATEGORY_DETAILS = gql`
-# Getting selected category details and sorting posts by id desc
+# Getting selected category details and sorting posts by published_at desc
 
 query GetCategoryDetails($categoryID : ID!){
   category(id:$categoryID) {
     id
     name
-       posts(sort:"id:desc"){
+       posts(sort:"published_at:desc"){
            id
            title
            published_at

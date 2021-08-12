@@ -4,7 +4,7 @@ import SubscriptionForm from '../components/subscriptionform'
 import ScrollToTop from '../components/scrollToTop'
 import BlogList from '../components/BlogList'
 import CategoryList from '../components/categoryList'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { BLOGS_URL } from '../constants/urls'
 // import { gql } from '@apollo/client' //cos calling from external queries file
 import { ALL_CATEGORIES, LATEST_POSTS } from '../constants/queries'
@@ -49,13 +49,11 @@ const handleOlderPosts=()=>{
         </Container>
 
         <div>
-          {/* <Link to={BLOGS_URL}> */}
             <Button onClick={handleOlderPosts} id="fcf-button"
               className="fcf-btn">
               {/* {isLoading ? 'Loading…' : 'Older Posts'} */}
               Older Posts
             </Button>
-          {/* </Link> */}
         </div>
       </section>
 

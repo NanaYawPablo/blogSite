@@ -3,16 +3,17 @@ import { // gql,
 import moment from "moment";
 import { Container, Row, Col } from "react-bootstrap";
 import { EmojiFrown } from "react-bootstrap-icons";
-import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import PreLoader from "../components/preLoader";
 import { GET_SINGLE_POST } from "../constants/queries";
 import { BACKEND_URL } from "../constants/urls";
+import MarkdownIt from "markdown-it";
 
 
 
 const BlogDetails = () => {
     const { id } = useParams()
+    const markDownIt = new MarkdownIt({})
 
     const { data, isLoading, error } = useQuery(GET_SINGLE_POST, {
         variables: {
@@ -51,10 +52,7 @@ const BlogDetails = () => {
                             </p>
                             <Row>
                                 <Col md={{ span: 8, offset: 2 }}>
-                                    <div id="blogDesc">
-                                        <ReactMarkdown>
-                                            {data.post.content}
-                                        </ReactMarkdown>
+                                    <div id="blogDesc" dangerouslySetInnerHTML={{__html: markDownIt.render(data.post.content)}}>
                                     </div>
                                 </Col>
                             </Row>
