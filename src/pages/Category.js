@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import ArticleCard from "../components/articleCard";
 import PreLoader from "../components/preLoader";
 import { GET_CATEGORY_DETAILS } from "../constants/queries";
+import React from 'react'; 
 // import useFetch from "../hooks/useFetch";
 
 

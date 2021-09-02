@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { useState } from "react"
 import { Container, Button, Row, Col } from 'react-bootstrap';
+import React from 'react'; 
 
 const SubscriptionForm = () => {
     const [isLoading, setLoading] = useState(false);

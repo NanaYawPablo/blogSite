@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom'
 import { BLOGS_URL } from '../constants/urls'
 // import { gql } from '@apollo/client' //cos calling from external queries file
 import { ALL_CATEGORIES, LATEST_POSTS } from '../constants/queries'
+import React from 'react'; 
 
 
 

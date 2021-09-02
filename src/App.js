@@ -14,6 +14,7 @@ import Page404 from "./pages/page404"
 import BlogDetails from "./pages/BlogDetails"
 import Category from "./pages/Category"
 import Blogs from "./pages/Blogs"
+import React from 'react'; 
 
 //Apollo client setup
 const apolloClient = new ApolloClient({

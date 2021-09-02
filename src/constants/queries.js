@@ -3,6 +3,86 @@ import { gql } from '@apollo/client'
 
 
 /* -------------    GET QUERIES  ----------------    */
+export const ALL_POSTS_COUNT = gql` 
+query {
+  postsConnection{
+    aggregate {
+      # count
+      totalCount
+      
+    }
+  }
+}
+`
+
+export const PAGINATED_POSTS = gql`
+# Getting all posts and sorting by 'published_at' desc
+query GetAllPostsViaPagination(
+  # $start: Int!, 
+  $limit: Int!){
+  postsConnection(
+    # start:$start
+    limit: $limit
+     sort:"published_at:desc" 
+  ) {
+    values{ 
+       id
+    title
+    description
+    published_at
+    image{
+    		url
+    }
+    authors{
+      name
+			avatar{
+				  url
+      }
+    }
+    categories{
+	    id
+      name
+    }
+    }
+    # groupBy{
+    #   id{key}
+    # }
+    aggregate {
+      # count
+      totalCount
+      
+    }
+  }
+}
+`;
+
+// export const PAGINATED_POSTS = gql`
+// # Getting all posts and sorting by 'published_at' desc
+// query GetAllPostsViaPagination($start: Int!, $limit: Int!){
+//   posts(start: $start
+//     limit: $limit
+//     # sort:"published_at:desc" 
+//     ){
+//     id
+//     title
+//     description
+//     published_at
+//     image{
+//     		url
+//     }
+//     authors{
+//       name
+// 			avatar{
+// 				  url
+//       }
+//     }
+//     categories{
+// 	    id
+//       name
+//     }
+//   }
+// }
+// `;
 
 export const ALL_POSTS = gql`
 # Getting all posts and sorting by 'published_at' desc

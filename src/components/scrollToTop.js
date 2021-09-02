@@ -1,14 +1,15 @@
 import { useState, useEffect} from "react"
 import { ArrowUpCircleFill } from "react-bootstrap-icons";
+import React from 'react'; 
 
 
 const ScrollToTop = () => {
     const [showScroll, setShowScroll] = useState(false)
 
     const checkScrollTop = () => {
-      if (!showScroll && window.pageYOffset > 400){
+      if (window.pageYOffset > 300){
         setShowScroll(true)
-      } else if (showScroll && window.pageYOffset <= 400){
+      } else{
         setShowScroll(false)
       }
     };

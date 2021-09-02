@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
+import React from 'react'; 
 // import useFetch from "../hooks/useFetch";
 
 const CategoryList = ({ query }) => {

@@ -1,10 +1,12 @@
 import moment from "moment";
 import { Col, Container, Row } from "react-bootstrap";
+import { BACKEND_URL } from "../constants/urls";
+import React from 'react'; 
 
 const ArticleCard = ({ title, date, tags, description, image }) => {
   return (
     <div className="postCardColumn">
-      <div className="postCard">
+      <div className="postCard" style={{ backgroundImage: `url(${BACKEND_URL}${image.url})` }}>
         <div className="overlay">
           <div className="cardContent">
             <Container fluid>

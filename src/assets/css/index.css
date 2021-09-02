@@ -2,6 +2,7 @@
 *::before,
 *::after {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 /* Variable declarations */
@@ -131,7 +132,7 @@ a:hover {
   cursor: pointer;
   animation: fadeIn 0.3s;
   transition: opacity 0.4s;
-  opacity: 0.6;
+  opacity: 0.8;
   margin-left: -50px;
   left: 50%;
 }

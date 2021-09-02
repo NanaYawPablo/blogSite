@@ -3,6 +3,7 @@ import { EmojiFrown } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import ArticleCard from "./articleCard";
 import PreLoader from "./preLoader";
+import React from 'react'; 
 
 
 const BlogList = ({ query }) => {

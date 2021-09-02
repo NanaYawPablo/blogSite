@@ -8,6 +8,7 @@ import PreLoader from "../components/preLoader";
 import { GET_SINGLE_POST } from "../constants/queries";
 import { BACKEND_URL } from "../constants/urls";
 import MarkdownIt from "markdown-it";
+import React from 'react'; 
 
 
 
