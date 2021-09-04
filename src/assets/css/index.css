@@ -100,14 +100,14 @@ a:hover {
   align-items: center;
 }
 .socials > li {
-  padding: 1rem;
+  /* padding: 1rem; */
   list-style: none;
   color: rgb(50, 50, 50);
   margin: 0.5rem;
   cursor: pointer;
   position: relative;
-  border: 2px solid rgb(50, 50, 50);
-  border-radius: 50%;
+  /* border: 2px solid rgb(50, 50, 50); */
+  /* border-radius: 50%; */
   background: var(--primaryColor);
   transition: all 0.4s;
 }

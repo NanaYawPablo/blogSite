@@ -23,8 +23,13 @@ query GetAllPostsViaPagination(
   postsConnection(
     # start:$start
     limit: $limit
-     sort:"published_at:desc" 
-  ) {
+     sort:"published_at:desc" ) {
+
+    aggregate {
+      # count
+      totalCount 
+    }
+
     values{ 
        id
     title
@@ -43,14 +48,6 @@ query GetAllPostsViaPagination(
 	    id
       name
     }
-    }
-    # groupBy{
-    #   id{key}
-    # }
-    aggregate {
-      # count
-      totalCount
-      
     }
   }
 }
@@ -197,3 +194,68 @@ query GetCategoryDetails($categoryID : ID!){
   }
 }
 `;
+
+export const GET_PAGINATED_CATEGORY_DETAILS = gql`
+# Getting selected category details, adding limit, and sorting posts by published_at desc 
+
+query GetPaginatedCategoryDetails($categoryID : ID!, $limit: Int!){
+  category(id:$categoryID) {
+    id
+    name
+       posts(limit:$limit 
+        sort:"published_at:desc"){
+           id
+           title
+           published_at
+           description
+           image{
+                 url
+                }
+                categories{
+                  id
+                  name
+                }
+            }
+  }
+}
+`;
+
+export const PAGINATED_CATEGORYS_POSTS= gql`
+#Get all posts under a particular category and Count of posts in that category
+
+query categorysPost($categoryID : ID!, $limit: Int!) {
+  postsConnection(
+    limit: $limit
+    where:{categories: $categoryID}
+    sort: "published_at:desc"
+  ) {
+    aggregate {
+      count
+      #totalCount #totalCount of all posts regardless of their categories
+    }
+
+    values {
+      id
+      title
+      description
+      published_at
+      image {
+        url
+      }
+      categories {
+        id
+        name
+      }
+    }
+  }
+}
+`;
+
+export const CATEGORY_NAME= gql`
+query getCategoryName($categoryID : ID!){
+  category(id:$categoryID){
+    name
+  }
+}
+`;
+
