@@ -1,8 +1,8 @@
 //frontend urls
 export const ABOUT_URL = "/about";
 export const BLOGS_URL = '/blogs'
-export const CATEGORY_URL = "/categories/:id";
-export const BLOG_URL = "/blogs/:id"; 
+export const CATEGORY_URL = "/categories/:slug";
+export const BLOG_URL = "/blogs/:slug"; 
 // export const BLOG_URL = "/blogs/:id/:title"; //following stackOverflow's url format
 
 //backend urls

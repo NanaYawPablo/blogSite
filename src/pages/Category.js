@@ -7,7 +7,6 @@ import PreLoader from "../components/preLoader";
 import {
   CATEGORY_NAME,
   // GET_CATEGORY_DETAILS, 
-  // GET_PAGINATED_CATEGORY_DETAILS, 
   PAGINATED_CATEGORYS_POSTS
 } from "../constants/queries";
 import React, { useState } from 'react';
@@ -23,11 +22,19 @@ const Category = () => {
   const [limit, setLimit] = useState(4);
   const [isLoadingMore, setIsLoadingMore] = useState(false)
 
-  const { id } = useParams();
+  const { slug } = useParams();
 
+  /* Category Name Call */
+  const { data: categoryName, isLoading: isLoadingCategoryName, error: categoryNameError } = useQuery(CATEGORY_NAME, {
+    variables: {
+      categorySlug: slug
+    }
+  });
+
+  /* Category Posts Call */
   const { data, isLoading, error, fetchMore: fetchMoreNext } = useQuery(PAGINATED_CATEGORYS_POSTS, {
     variables: {
-      categoryID: id,
+      categorySlug: slug,
       limit: limit
     }
   });
@@ -36,16 +43,14 @@ const Category = () => {
 
   const loadMorePosts = async () => {
     setIsLoadingMore(true);
-    //  setSkip(skip + limit);
     setLimit(skip + limit)
     //delay fetch and IsLoadingMore by 0.5s
     setTimeout(() => {
       fetchMoreNext({
         variables: {
-          categoryID: id,
+          categorySlug: slug,
           limit: limit
         },
-        // updateQuery
         updateQuery: (prev, { fetchMoreResult }) => {
           if (!fetchMoreResult) return prev;
           return Object.assign({}, prev, {
@@ -76,24 +81,40 @@ const Category = () => {
 
       {isLoading && <PreLoader />}
 
-      {data && (
-        <div id="template">
-          <div className="templateHeader">
-            <h1>Category</h1>
-            <h1 className="title">{id}</h1>
-            <div className="line"></div>
-            {data.postsConnection.aggregate.count === 1 ? (
+
+      <div id="template">
+        <div className="templateHeader">
+          <h1>Category</h1>
+
+          {/* Category Name Call Implementation */}
+          {categoryNameError && (
+            <div style={{ margin: "2rem 0" }}>
+              <h5>
+                Category Name couldn't be loaded <EmojiFrown />
+              </h5>
+              <p>({error.message})</p>
+            </div>
+          )}
+          {isLoadingCategoryName && (console.log('Loading Category Name'))}
+          {categoryName && (
+            <h1 className="title">{categoryName.categoryBySlug.name}</h1>
+          )}
+
+
+          <div className="line"></div>
+          {data && (
+            data.postsConnection.aggregate.count === 1 ? (
               <p>{data.postsConnection.aggregate.count} post</p>
             ) : (
               <p>{data.postsConnection.aggregate.count} posts</p>
-            )}
-          </div>
+            )
+          )}
         </div>
-      )}
+      </div>
 
 
-        {/* Scroll Button */}
-        <ScrollToTop />
+      {/* Scroll Button */}
+      <ScrollToTop />
 
 
       <Container fluid>
@@ -101,7 +122,7 @@ const Category = () => {
           {data &&
             data.postsConnection.values.map((post) => (
               <div className="postPreview" key={post.id}>
-                <Link to={`/blogs/${post.id}`}>
+                <Link to={`/blogs/${post.slug}`}>
                   <ArticleCard
                     title={post.title}
                     date={post.published_at}

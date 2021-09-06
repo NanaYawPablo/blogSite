@@ -24,7 +24,7 @@ const CategoryList = ({ query }) => {
                     <h4>
                         {allCategories.categories.map(category => (
                           
-                            <Link key={category.id} to={`/categories/${category.id}`}>
+                            <Link key={category.id} to={`/categories/${category.slug}`}>
                                 <span className="badge badge-secondary">{category.name}</span>
                             </Link>
                           

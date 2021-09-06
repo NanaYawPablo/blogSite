@@ -25,7 +25,7 @@ const BlogList = ({ query }) => {
       {latestPosts &&
         latestPosts.posts.map((post) => (
           <div className="postPreview" key={post.id}>
-            <Link to={`/blogs/${post.id}`}>
+            <Link to={`/blogs/${post.slug}`}>
               <ArticleCard
                 title={post.title}
                 date={post.published_at}

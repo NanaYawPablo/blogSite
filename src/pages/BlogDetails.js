@@ -13,15 +13,14 @@ import React from 'react';
 
 
 const BlogDetails = () => {
-    const { id } = useParams()
+    const { slug } = useParams()
     const markDownIt = new MarkdownIt({})
 
     const { data, isLoading, error } = useQuery(GET_SINGLE_POST, {
         variables: {
-            blogID: id
+            blogSlug: slug
         }
     })
-    // console.log(data);
 
     return (
         <div id="about">
@@ -37,15 +36,15 @@ const BlogDetails = () => {
             {data && (
                 <div>
 
-                    <section className="detailsHeader" style={{ backgroundImage: `url(${BACKEND_URL}${data.post.image.url})` }}>
-                        <h1>{data.post.title}</h1>
+                    <section className="detailsHeader" style={{ backgroundImage: `url(${BACKEND_URL}${data.postBySlug.image.url})` }}>
+                        <h1>{data.postBySlug.title}</h1>
                     </section>
 
                     <section className="detailsContent">
                         <Container fluid>
-                            <p>{moment(new Date(data.post.published_at.toString())).format('MMMM Do YYYY')}</p>                            
+                            <p>{moment(new Date(data.postBySlug.published_at.toString())).format('MMMM Do YYYY')}</p>                            
                             <p id="author">By: {
-                                data.post.authors.map(
+                                data.postBySlug.authors.map(
                                     author => (
                                         <span key={author.id} style={{ textTransform: "capitalize" }}>|<b> {author.name} </b>|</span>
                                     )
@@ -53,12 +52,12 @@ const BlogDetails = () => {
                             </p>
                             <Row>
                                 <Col md={{ span: 8, offset: 2 }}>
-                                    <div id="blogDesc" dangerouslySetInnerHTML={{__html: markDownIt.render(data.post.content)}}>
+                                    <div id="blogDesc" dangerouslySetInnerHTML={{__html: markDownIt.render(data.postBySlug.content)}}>
                                     </div>
                                 </Col>
                             </Row>
 
-                            <h4>{data.post.categories.map(
+                            <h4>{data.postBySlug.categories.map(
                                 category =>
                                     <span key={category.id} style={{ margin: "5px", textTransform: "capitalize" }} className="badge badge-pill badge-secondary">{category.name}</span>
                             )}
