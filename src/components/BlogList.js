@@ -3,7 +3,7 @@ import { EmojiFrown } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import ArticleCard from "./articleCard";
 import PreLoader from "./preLoader";
-import React from 'react'; 
+import React from 'react';
 
 
 const BlogList = ({ query }) => {
@@ -17,7 +17,7 @@ const BlogList = ({ query }) => {
           <h4>
             Blog posts couldn't be loaded <EmojiFrown />
           </h4>
-          <p>({error.message })</p>
+          <p>({error.message})</p>
           <br />
         </div>
       )}
@@ -25,15 +25,17 @@ const BlogList = ({ query }) => {
       {latestPosts &&
         latestPosts.posts.map((post) => (
           <div className="postPreview" key={post.id}>
-            <Link to={`/blogs/${post.slug}`}>
-              <ArticleCard
-                title={post.title}
-                date={post.published_at}
-                tags={post.categories}
-                description={post.description}
-                image={post.image}
-              />
-            </Link>
+            <div className="postCardColumn">
+              <Link to={`/blogs/${post.slug}`}>
+                <ArticleCard
+                  title={post.title}
+                  date={post.published_at}
+                  tags={post.categories}
+                  description={post.description}
+                  image={post.image}
+                />
+              </Link>
+            </div>
           </div>
         ))}
     </div>

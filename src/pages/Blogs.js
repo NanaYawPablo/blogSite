@@ -108,15 +108,17 @@ const Blogs = () => {
               {data &&
                 data.postsConnection.values.map((post) => (
                   <div className="postPreview" key={post.id}>
-                    <Link to={`/blogs/${post.slug}`}>
-                      <ArticleCard
-                        title={post.title}
-                        date={post.published_at}
-                        tags={post.categories}
-                        description={post.description}
-                        image={post.image}
-                      />
-                    </Link>
+                    <div className="postCardColumn">
+                      <Link to={`/blogs/${post.slug}`}>
+                        <ArticleCard
+                          title={post.title}
+                          date={post.published_at}
+                          tags={post.categories}
+                          description={post.description}
+                          image={post.image}
+                        />
+                      </Link>
+                    </div>
                   </div>
                 ))}
             </div>
