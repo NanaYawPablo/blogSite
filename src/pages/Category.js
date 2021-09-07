@@ -6,11 +6,12 @@ import ArticleCard from "../components/articleCard";
 import PreLoader from "../components/preLoader";
 import {
   CATEGORY_NAME,
-  // GET_CATEGORY_DETAILS, 
   PAGINATED_CATEGORYS_POSTS
 } from "../constants/queries";
 import React, { useState } from 'react';
 import ScrollToTop from "../components/scrollToTop";
+import { Redirect } from "react-router-dom"
+import { PAGE404_URL } from "../constants/urls";
 // import useFetch from "../hooks/useFetch";
 
 
@@ -38,6 +39,7 @@ const Category = () => {
       limit: limit
     }
   });
+
 
   // const { data, isLoading, error } = useFetch(BACKEND_CATEGORIES_URL + "/" + id); //disabled rest call. Using GraphQL now
 
@@ -96,8 +98,13 @@ const Category = () => {
             </div>
           )}
           {isLoadingCategoryName && (console.log('Loading Category Name'))}
-          {categoryName && (
+          {categoryName && categoryName.categoryBySlug && (
             <h1 className="title">{categoryName.categoryBySlug.name}</h1>
+          )}
+          {/* Null check for categoryName.categoryBySlug ie. dynamic url slug is invalid*/}
+          {categoryName && !categoryName.categoryBySlug && (
+            // <h1 className="title">Unkown Category</h1>
+            <Redirect to={PAGE404_URL} />
           )}
 
 

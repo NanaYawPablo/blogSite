@@ -1,15 +1,16 @@
 import { // gql, 
-    useQuery } from "@apollo/client";
+    useQuery
+} from "@apollo/client";
 import moment from "moment";
 import { Container, Row, Col } from "react-bootstrap";
 import { EmojiFrown } from "react-bootstrap-icons";
 import { useParams } from "react-router-dom";
 import PreLoader from "../components/preLoader";
 import { GET_SINGLE_POST } from "../constants/queries";
-import { BACKEND_URL } from "../constants/urls";
+import { BACKEND_URL, PAGE404_URL } from "../constants/urls";
 import MarkdownIt from "markdown-it";
-import React from 'react'; 
-
+import { Redirect } from "react-router-dom"
+import React from 'react';
 
 
 const BlogDetails = () => {
@@ -33,7 +34,7 @@ const BlogDetails = () => {
 
             {isLoading && (<PreLoader />)}
 
-            {data && (
+            {data && (data.postBySlug) && (
                 <div>
 
                     <section className="detailsHeader" style={{ backgroundImage: `url(${BACKEND_URL}${data.postBySlug.image.url})` }}>
@@ -42,7 +43,7 @@ const BlogDetails = () => {
 
                     <section className="detailsContent">
                         <Container fluid>
-                            <p>{moment(new Date(data.postBySlug.published_at.toString())).format('MMMM Do YYYY')}</p>                            
+                            <p>{moment(new Date(data.postBySlug.published_at.toString())).format('MMMM Do YYYY')}</p>
                             <p id="author">By: {
                                 data.postBySlug.authors.map(
                                     author => (
@@ -52,7 +53,7 @@ const BlogDetails = () => {
                             </p>
                             <Row>
                                 <Col md={{ span: 8, offset: 2 }}>
-                                    <div id="blogDesc" dangerouslySetInnerHTML={{__html: markDownIt.render(data.postBySlug.content)}}>
+                                    <div id="blogDesc" dangerouslySetInnerHTML={{ __html: markDownIt.render(data.postBySlug.content) }}>
                                     </div>
                                 </Col>
                             </Row>
@@ -71,6 +72,12 @@ const BlogDetails = () => {
 
                 </div>
             )}
+
+            {/* Null check for data.postBySlug ie. dynamic url slug is invalid*/}
+            {data && (!data.postBySlug) && (
+                <Redirect to={PAGE404_URL} />
+            )
+            }
 
         </div>
     );

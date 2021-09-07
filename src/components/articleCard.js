@@ -5,7 +5,7 @@ import React from 'react';
 
 const ArticleCard = ({ title, date, tags, description, image }) => {
   return (
-    <div className="postCardColumn">
+    
       <div className="postCard" style={{ backgroundImage: `url(${BACKEND_URL}${image.url})` }}>
         <div className="overlay">
           <div className="cardContent">
@@ -35,7 +35,7 @@ const ArticleCard = ({ title, date, tags, description, image }) => {
           </div>
         </div>
       </div>
-    </div>
+   
   );
 };
 
