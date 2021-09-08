@@ -60,7 +60,7 @@ const BlogDetails = () => {
 
                             <h4>{data.postBySlug.categories.map(
                                 category =>
-                                    <span key={category.id} style={{ margin: "5px", textTransform: "capitalize" }} className="badge badge-pill badge-secondary">{category.name}</span>
+                                    <span key={category.id} style={{ margin: "5px", textTransform: "capitalize" }} className="badge badge-pill badge-secondary">#{category.name}</span>
                             )}
                             </h4>
 

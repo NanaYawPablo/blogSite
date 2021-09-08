@@ -14,8 +14,7 @@ const ArticleCard = ({ title, date, tags, description, image }) => {
             <h5>
               {tags &&
                 tags.map((category) => (
-                  <span key={category.id}
-                    style={{ margin: "5px", textTransform: "capitalize" }}
+                  <span id="articleCardTag" key={category.id}
                     className="badge badge-pill badge-dark">
                     {category.name}
                   </span>
@@ -23,12 +22,12 @@ const ArticleCard = ({ title, date, tags, description, image }) => {
             </h5>
             <Row>
               <Col md={{ span: 12 }}>
-                <span className="articleInfo">{moment(new Date(date)).format('MMMM Do YYYY')}</span>
+                <span className="articleInfo">{moment(date).fromNow()}</span>
               </Col>
             </Row>
             <p className="articleDesc">
-              {description.length > 150
-                ? description.substring(0, 150) + "..."
+              {description.length > 125
+                ? description.substring(0, 125) + "..."
                 : description}
             </p>
           </Container>
