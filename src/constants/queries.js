@@ -83,7 +83,7 @@ query GetAllPosts{
 export const LATEST_POSTS = gql`
 # Getting latest two posts and sorting by published_at desc
 query GetLatestPosts{
-  posts(limit:2 sort:"published_at:desc" ){
+  posts(limit:3 sort:"published_at:desc" ){
     id
     title
     slug

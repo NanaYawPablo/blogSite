@@ -26,6 +26,7 @@ function App() {
   return (
     <Router>
       <ApolloProvider client={apolloClient}>
+        <div className="App">
         <Navbar />
         <Switch>
           <Route exact path='/'>
@@ -40,6 +41,7 @@ function App() {
           </Route>
         </Switch>
         <Footer />
+        </div>
       </ApolloProvider>
     </Router>
   );

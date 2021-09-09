@@ -15,9 +15,9 @@ import { ALL_CATEGORIES, PAGINATED_POSTS } from "../constants/queries";
 const Blogs = () => {
 
   // eslint-disable-next-line no-unused-vars
-  const [skip, setSkip] = useState(4);    /*  NB: Skip must always be same as Limit  */
+  const [skip, setSkip] = useState(6);    /*  NB: Skip must always be same as Limit according to spec  */
   // eslint-disable-next-line no-unused-vars
-  const [limit, setLimit] = useState(4);
+  const [limit, setLimit] = useState(6);
   // eslint-disable-next-line no-unused-vars
   const [start, setStart] = useState(0);
   const [isLoadingMore, setIsLoadingMore] = useState(false)

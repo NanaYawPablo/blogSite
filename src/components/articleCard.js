@@ -10,7 +10,7 @@ const ArticleCard = ({ title, date, tags, description, image }) => {
       <div className="overlay">
         <div className="cardContent">
           <Container fluid>
-            <h1 className="cardTitle">{title} </h1>
+            <h1 id="cardTitle">{title} </h1>
             <h5>
               {tags &&
                 tags.map((category) => (
@@ -22,10 +22,10 @@ const ArticleCard = ({ title, date, tags, description, image }) => {
             </h5>
             <Row>
               <Col md={{ span: 12 }}>
-                <span className="articleInfo">{moment(date).fromNow()}</span>
+                <span className="articleDate">{moment(date).fromNow()}</span>
               </Col>
             </Row>
-            <p className="articleDesc">
+            <p id="articleDesc">
               {description.length > 125
                 ? description.substring(0, 125) + "..."
                 : description}

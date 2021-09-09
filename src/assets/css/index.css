@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,7 +9,11 @@
   --backgroundColor: #f5f5f8;
   --primaryTextColor: grey;
   --buttonColor: rgb(179, 153, 6);
-  --font-stack-header: "Montserrat", helvetica, arial, sans-serif;
+  --font-stack-header: "Roboto", helvetica, arial, sans-serif;
+  /* --desktop:1280px;
+  --laptop:1024px;
+  --tablet: 768px;
+  --phone:480px; */
 }
 
 html {
@@ -19,14 +21,10 @@ html {
 }
 
 body {
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif; */
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  overflow-x: hidden;
   text-align: center;
   font-size: 16px;
   background-color: var(--backgroundColor);
@@ -42,7 +40,7 @@ a:hover {
   transform: scale(1.1);
 }
 
-.app {
+/* .app {
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -50,6 +48,11 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+} */
+
+.App{
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /*--------------------------------------------------------------
@@ -161,34 +164,61 @@ a:hover {
 
 /* Header/Logo Title */
 .header {
-  padding: 60px;
+  /* padding: 60px; */
   text-align: center;
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("../images/banner1.jpeg") no-repeat center fixed;
   background-size: cover;
   color: white;
   font-size: 30px;
-  min-height: 45vh;
+  /* min-height: 95vh; */
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .header h1 {
-  text-transform: uppercase;
-  font-size: 3rem;
-  font-weight: 600;
-  text-shadow: 2px 2px 2px grey;
+  text-transform: capitalize;
+  font-size: 10rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  /* text-shadow: 2px 2px 2px grey; */
+  margin-bottom: -1rem;
+  /* transition: ease 0.5s;
+  animation: 2s ease-in; */
+  /* background-image: url('../images/city.gif'); */
+  background-image: url('../images/africa.gif');
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-color: white;
+  background-size: 30%;
+  /* background-size: 50%; */
+  background-repeat: repeat-x;
+  background-position: center bottom;
 }
 .header h2 {
   font-size: 1.5rem;
+  opacity: .9;
+  letter-spacing: 2px;
 }
-.header p {
+/* .header p {
   margin-top: 1.5rem;
   font-size: 1rem;
-}
-#categories p {
+} */
+#categories > p,
+.content > p {
   margin-top: 1rem;
-  font-weight: bolder;
+  font-weight: 800;
   text-transform: capitalize;
   display: inline-block;
   color: var(--primaryTextColor);
+  font-size: 1.3rem;
+  margin-bottom: .2rem;
+}
+.content p {
+  margin-top: 0;
 }
 .line {
   width: 40px;
@@ -202,6 +232,7 @@ a:hover {
   margin-left: 0.5rem;
   animation: fadeIn 0.3s;
   text-transform: capitalize;
+  margin-bottom: 0;
 }
 #categorylist span:hover {
   -ms-transform: scale(1.1); /* IE 9 */
@@ -327,22 +358,39 @@ label.fcf-label {
 /*--------------------------------------------------------------
                   # ALL POSTS SECTION
 --------------------------------------------------------------*/
+/* Mobile First */
 .allPostsRow {
   width: 100%;
 }
 .postCardColumn {
   width: 100%;
 }
-@media (min-width: 48em) {
+
+/* Any screen that is tablet and above*/
+@media screen and (min-width: 768px) {
+  .allPostsRow {
+    content: "";
+    display: table;
+    clear: both;
+  }
   .postCardColumn {
     width: 50%;
     float: left;
     padding: 1rem;
   }
+}
+
+/* Any screen that is laptop and above*/
+@media screen and (min-width: 1024px) {
   .allPostsRow {
     content: "";
     display: table;
     clear: both;
+  }
+  .postCardColumn {
+    width: 33.33%;
+    float: left;
+    padding: 1rem;
   }
 }
 
@@ -351,7 +399,8 @@ label.fcf-label {
 --------------------------------------------------------------*/
 
 .postCard {
-  background-size: contain;
+  /* background-size: contain; */
+  background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   max-width: 800px;
@@ -360,27 +409,24 @@ label.fcf-label {
   /* min-height: 300px; */
   min-height: 300px;
   display: block;
-  margin: 3vh auto;
+  margin-bottom: 2rem;
   border-radius: 8px;
   box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.25);
   position: relative;
   background-image: url(https://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/t/58d86b3db3db2b57ce8f2986/1490578241899/?format=2500w);
-  background-color: #636466;
+  background-color: #050505;
   color: #fff;
   line-height: 1.4;
-  font-weight: 400;
   overflow: hidden;
   animation: fadeIn 0.3s;
-  margin-top: -2rem;
 }
 
 .overlay {
   width: 100%;
   height: 100%;
-  /* min-height: 300px; */
   border-radius: 8px;
   background: linear-gradient(
-    to right,
+    to bottom,
     rgba(42, 159, 255, 0.2) 0%,
     rgba(33, 33, 32, 1) 60%,
     rgba(33, 33, 32, 1) 100%
@@ -393,45 +439,40 @@ label.fcf-label {
   left: 0;
 }
 .cardContent {
+  height: 100%;
   width: 100%;
   /* max-width:370px; */
-  max-width: 70%;
+  /* max-width: 100%; */
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   position: relative;
-  float: right;
-  padding-right: 1em;
-  padding-bottom: 1em;
+  padding: 1rem;
+  font-size: 1rem;
+  overflow: hidden;
 }
-.cardTitle {
+#cardTitle {
   margin: 0.2em;
   text-align: center;
-  font-family: var(--font-stack-header);
   text-transform: capitalize;
-  /* letter-spacing: 1px; */
+  letter-spacing: 1;
   line-height: 1;
-  font-weight: 400;
-  font-size: x-large;
-  padding: 0.4em;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 0.4rem;
 }
-#articleCardTag{
+#articleCardTag {
   margin: 5px;
   text-transform: capitalize;
 }
-.articleInfo {
+.articleDate {
   text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.9rem;
   line-height: 1;
-  font-weight: 600;
-  text-shadow: #f5f5f5;
+  font-weight: 800;
 }
-.articleDesc {
+#articleDesc {
+  margin-top: 0.5rem;
   font-weight: 300;
-  margin: 1.5em 0;
-  overflow: hidden;
-  font-size: large;
 }
 
 #btn {
@@ -440,78 +481,64 @@ label.fcf-label {
   color: rgba(255, 255, 255, 1);
 }
 
-
-@media screen and (max-width: 1000px) {
+/* Tablets */
+@media screen and (min-width: 768px) {
   .cardContent {
-    width: 60%;
+    padding: 1rem 0.5rem;
   }
-}
 
-
-@media screen and (max-width: 800px) {
-  .postCard {
-    /* width: 95%;
-    max-width: 95%; */
-    width: 100%;
-    max-width: 100%;
-  }
-  .overlay {
-    background: linear-gradient(
-      to bottom,
-      rgba(42, 159, 255, 0.2) 0%,
-      rgba(33, 33, 32, 1) 60%,
-      rgba(33, 33, 32, 1) 100%
-    );
-  }
-  .cardContent {
-    margin-top: 0.2em;
-    width: 100%;
-    float: inherit;
-    max-width: 100%;
-    padding: 1em .5em;
-  }
-    .cardTitle{
-    line-height: 1;
-    font-weight: 550;
-    font-size: larger;
-    padding: 0.3em;
-  }
-  .articleDesc {
+  #articleDesc {
     font-weight: 300;
-    margin: 1em 0;
+    margin: 1rem;
     overflow: hidden;
-    font-size: large;
+    font-size: 1rem;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .postCard {
-    background-position: 50% 0%;
-    background-size: cover;
-    height: 400px;
-    margin-bottom: 4rem;
-  }
+/* Laptop */
+@media screen and (min-width: 1024px) {
   .overlay {
     background: linear-gradient(
-      to bottom,
+      to right,
       rgba(42, 159, 255, 0.2) 0%,
       rgba(33, 33, 32, 1) 60%,
       rgba(33, 33, 32, 1) 100%
     );
   }
   .cardContent {
-    margin-top: 4.2em;
-    width: 100%;
-    float: inherit;
-    max-width: 100%;
-    padding: 0 1em 1em;
-    font-size: larger;
+    float: right;
+    max-width: 80%;
+    font-size: 0.8rem;
   }
-  .cardTitle{
-    line-height: 1;
-    font-weight: 400;
-    font-size: x-large;
+  #cardTitle {
+    font-weight: 600;
+    font-size: 1.1rem;
     padding: 0.3em;
+  }
+  #articleDesc {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Larger screens ie. large laptops, desktops etc. */
+@media screen and (min-width: 1280px) {
+  .cardContent {
+    /* background-color: maroon; */
+    width: 100%;
+    overflow: hidden;
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  #cardTitle {
+    line-height: 1.2;
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding: 0.3em;
+  }
+  #articleDesc {
+    font-size: 1.1rem;
+    margin-top: 0.8rem;
   }
 }
 
@@ -520,17 +547,38 @@ label.fcf-label {
   -webkit-transform: scale(1.05); /* Safari 3-8 */
   transform: scale(1.05);
   transition: 0.6s;
-  color: var(--buttonColor);
+  box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.6);
 }
 
 /*--------------------------------------------------------------
                   # ABOUT PAGE
 --------------------------------------------------------------*/
 #about {
-  min-height: 82vh;
+  min-height: 85vh;
   text-align: center;
   color: var(--primaryTextColor);
 }
+.aboutImageBox{
+  margin: 1rem;
+  width: 30%;
+  height: 70vh;
+  /* display: flex;
+  align-items: center;
+   justify-content: center; */
+  background: #121212;
+  overflow: hidden;
+}
+.aboutImageBox p{
+  text-align: center;
+  font-size: 7px;
+  background: url('../images/selim.png') center / contain;
+  /* background-repeat: repeat; */
+  background-attachment: fixed;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.1);
+}
+
 
 /*--------------------------------------------------------------
                   # 404 PAGE
@@ -558,11 +606,10 @@ label.fcf-label {
   text-align: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("../images/banner1.jpeg");
-  background-position: right;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  font-size: 30px;
   min-height: 40vh;
   background-blend-mode: multiply;
   background-color: rgba(0, 0, 0, 0.5);
@@ -579,7 +626,7 @@ label.fcf-label {
   font-size: 1rem;
 }
 #author {
-  font-weight: 400;
+  font-weight: 600;
 }
 
 /* Page Content */
@@ -598,7 +645,7 @@ label.fcf-label {
                   # CATEGORY PAGE
 --------------------------------------------------------------*/
 .templateHeader {
-  margin: 1rem 1rem 4rem 1rem;
+  margin: 1rem;
 }
 .templateHeader h1 {
   font-weight: 300;
@@ -611,7 +658,7 @@ label.fcf-label {
 }
 .templateHeader p {
   font-weight: 500;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 /*--------------------------------------------------------------
