@@ -71,7 +71,7 @@ const Blogs = () => {
 
 
   return (
-    <section id="about">
+    <section className="templateBody">
       <div id="template">
 
         <div className="templateHeader">

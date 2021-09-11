@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom'
 import { BLOGS_URL } from '../constants/urls'
 // import { gql } from '@apollo/client' //cos calling from external queries file
 import { ALL_CATEGORIES, LATEST_POSTS } from '../constants/queries'
-import { EmojiSmileFill } from 'react-bootstrap-icons'
 import ReactTypingEffect from 'react-typing-effect';
 
 
@@ -30,7 +29,7 @@ const Home = () => {
             text={["Writer", "Polygot", "Babygirl"]}
             speed={200}
             typingDelay={1800}
-            cursor={"💛"}
+            cursor={"😎"}
             eraseDelay={1500}
             eraseSpeed={100}
           />

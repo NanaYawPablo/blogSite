@@ -69,9 +69,10 @@ const Category = () => {
 
   };
 
-
+  
+  
   return (
-    <section id="about">
+    <section className="templateBody">
       {error && (
         <div style={{ margin: "2rem 0" }}>
           <h4>

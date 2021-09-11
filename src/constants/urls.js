@@ -1,4 +1,5 @@
 //frontend urls
+export const HOMEPAGE_URL = "/";
 export const ABOUT_URL = "/about";
 export const BLOGS_URL = '/blogs'
 export const CATEGORY_URL = "/categories/:slug";
