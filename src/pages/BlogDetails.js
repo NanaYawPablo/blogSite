@@ -12,6 +12,7 @@ import MarkdownIt from "markdown-it";
 import { Redirect } from "react-router-dom"
 import React, { useState } from 'react';
 import LoadingPage from "../components/loadingPage";
+import RelatedPosts from "../components/relatedPosts";
 
 
 const BlogDetails = () => {
@@ -53,36 +54,46 @@ const BlogDetails = () => {
 
                             <section className="detailsHeader" style={{ backgroundImage: `url(${BACKEND_URL}${data.postBySlug.image.url})` }}>
                                 <h1>{data.postBySlug.title}</h1>
+                                <p>{moment(new Date(data.postBySlug.published_at.toString())).format('MMMM Do YYYY')}</p>
                             </section>
 
                             <section className="detailsContent">
                                 <Container fluid>
-                                    <p>{moment(new Date(data.postBySlug.published_at.toString())).format('MMMM Do YYYY')}</p>
-                                    <p id="author">By: {
-                                        data.postBySlug.authors.map(
-                                            author => (
-                                                <span key={author.id} style={{ textTransform: "capitalize" }}>|<b> {author.name} </b>|</span>
-                                            )
-                                        )}
-                                    </p>
+
                                     <Row>
-                                        <Col md={{ span: 8, offset: 2 }}>
+                                        <Col md={{ span: 10, offset: 1 }} lg={{ span: 8, offset: 2 }}>
                                             <div id="blogDesc" dangerouslySetInnerHTML={{ __html: markDownIt.render(data.postBySlug.content) }}>
                                             </div>
                                         </Col>
                                     </Row>
 
-                                    <h4>{data.postBySlug.categories.map(
+                                    <h5>{data.postBySlug.categories.map(
                                         category =>
-                                            <span key={category.id} style={{ margin: "5px", textTransform: "capitalize" }} className="badge badge-pill badge-secondary">#{category.name}</span>
+                                            <span key={category.id} className="badge badge-pill badge-light">#{category.name}</span>
                                     )}
-                                    </h4>
+                                    </h5>
 
-                                    {/* <h4><span style={{ margin: "5px" }} className="badge badge-pill badge-secondary">Category 1</span>
-                                <span style={{ margin: "5px" }} className="badge badge-pill badge-secondary">Category 2</span>
-                            </h4> */}
+                                    {
+                                        data.postBySlug.authors.map(
+                                            author => (
+                                                // <span key={author.id}>|<b> {author.name} </b>|</span>
+                                                <div key={author.id} className="chip">
+                                                    <img src={BACKEND_URL + "" + author.avatar.url} alt="Author" width="96" height="96" />
+                                                    {author.name}
+                                                </div>
+                                            )
+                                        )}
+
+
                                 </Container>
                             </section>
+
+                            {/* RELATED POSTS SECTION */}
+                            {/* checking for no category post */}
+                            {data.postBySlug.categories && (data.postBySlug.categories.length>0) &&(
+                               
+                               <RelatedPosts category={data.postBySlug.categories} blogId={data.postBySlug.id} />
+                            )}
 
                         </div>
                     )}

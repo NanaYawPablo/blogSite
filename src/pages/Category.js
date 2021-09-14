@@ -95,7 +95,7 @@ const Category = () => {
               <h5>
                 Category Name couldn't be loaded <EmojiFrown />
               </h5>
-              <p>({error.message})</p>
+              <p>({categoryNameError.message})</p>
             </div>
           )}
           {isLoadingCategoryName && (console.log('Loading Category Name'))}

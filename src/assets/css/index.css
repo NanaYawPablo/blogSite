@@ -28,14 +28,14 @@ body {
   color: var(--primaryTextColor);
 }
 
-a {
+/* a {
   color: var(--primaryTextColor);
   text-decoration: none;
 }
 a:hover {
   color: var(--buttonColor);
   transform: scale(1.1);
-}
+} */
 
 /* .app {
   text-align: center;
@@ -47,7 +47,7 @@ a:hover {
   font-size: calc(10px + 2vmin);
 } */
 
-.App{
+.App {
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -118,7 +118,6 @@ a:hover {
   transform: scale(1.1);
 }
 
-
 /*--------------------------------------------------------------
                   # PRELOADER AND LOADING PAGE
 --------------------------------------------------------------*/
@@ -128,17 +127,14 @@ a:hover {
 }
 
 #loadingPage {
- width: 100%;
- height: var(--default-min-height);
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- transition: .5s ease-out
+  width: 100%;
+  height: var(--default-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-out;
 }
-
-
-
 
 /*--------------------------------------------------------------
                   # ANIMATIONS
@@ -158,7 +154,7 @@ a:hover {
 }
 
 .fade-in {
-  animation: fadeIn ease .1s;
+  animation: fadeIn ease 0.1s;
 }
 
 @keyframes fadeIn {
@@ -169,9 +165,6 @@ a:hover {
     opacity: 1;
   }
 }
-
-
-
 
 /*--------------------------------------------------------------
                   # SCROLL TO TOP
@@ -238,7 +231,7 @@ a:hover {
   /* transition: ease 0.5s;
   animation: 2s ease-in; */
   /* background-image: url('../images/city.gif'); */
-  background-image: url('../images/africa.gif');
+  background-image: url("../images/africa.gif");
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -250,7 +243,7 @@ a:hover {
 }
 .header h2 {
   font-size: 1.2rem;
-  opacity: .9;
+  opacity: 0.9;
   letter-spacing: 2px;
 }
 
@@ -272,7 +265,7 @@ a:hover {
   display: inline-block;
   color: var(--primaryTextColor);
   font-size: 1.3rem;
-  margin-bottom: .2rem;
+  margin-bottom: 0.2rem;
 }
 .content p {
   margin-top: 0;
@@ -303,8 +296,9 @@ a:hover {
   border: none;
   outline: 0;
   display: inline-block;
-  padding: 8px 23px;
-  font-size: 1rem;
+  /* padding: 8px 23px; */
+  padding: 8px 10px;
+  font-size: .9rem;
   background-color: var(--primaryColor);
   font-weight: normal;
   opacity: 0.8;
@@ -313,6 +307,14 @@ a:hover {
   color: white;
   border-radius: 0 0.7rem;
   box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);
+}
+
+
+/* Any screen that is tablet and above*/
+@media screen and (min-width: 768px) {
+  #categorylist .badge {
+    font-size: 1rem;
+  }
 }
 
 /* Page Content */
@@ -620,26 +622,26 @@ label.fcf-label {
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("../images/banner1.jpeg") no-repeat center fixed;
-    background-size: cover;
+  background-size: cover;
 }
-.aboutCard{
-  width:95%;
+.aboutCard {
+  width: 95%;
   margin: 2rem;
   border-radius: 8px;
   box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.25);
   background-color: var(--backgroundColor);
 }
-.aboutDetailsBlock{
+.aboutDetailsBlock {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.aboutDetails h1{
+.aboutDetails h1 {
   font-size: 1.6rem;
   text-align: center;
 }
-.avatarBlock{
+.avatarBlock {
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -648,7 +650,7 @@ label.fcf-label {
 }
 
 .avatar {
-  border-radius: .7rem;
+  border-radius: 0.7rem;
   width: 60%;
 }
 .aboutDetails {
@@ -656,38 +658,37 @@ label.fcf-label {
   font-size: 0.9rem;
 }
 
-
 /* tablet and above */
 @media screen and (min-width: 768px) {
-  .aboutCard{
-    width:70%;
-  } 
-  .avatarBlock{
+  .aboutCard {
+    width: 70%;
+  }
+  .avatarBlock {
     padding-top: 0;
-   }
+  }
   .avatar {
     width: 80%;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
   }
   .aboutDetails {
-    padding: .6rem;
-    font-size: .8rem;
+    padding: 0.6rem;
+    font-size: 0.8rem;
   }
-  .aboutDetails h1{
+  .aboutDetails h1 {
     font-size: 1.2rem;
   }
 }
 
 /* laptop and above*/
 @media screen and (min-width: 1024px) {
-  .aboutCard{
-    width:60%;
-  } 
-  .aboutDetails {
-    padding: .8rem;
-    font-size: .9rem;
+  .aboutCard {
+    width: 60%;
   }
-  .aboutDetails h1{
+  .aboutDetails {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  .aboutDetails h1 {
     font-size: 1.3rem;
   }
   .avatar {
@@ -697,21 +698,19 @@ label.fcf-label {
 
 /* Larger screens ie. large laptops, desktops etc. */
 @media screen and (min-width: 1280px) {
-  .aboutCard{
-    width:50%;
-  } 
+  .aboutCard {
+    width: 50%;
+  }
   .aboutDetails {
     font-size: 1.2rem;
   }
-  .aboutDetails h1{
+  .aboutDetails h1 {
     font-size: 1.5rem;
   }
   .avatar {
     width: 65%;
   }
 }
-
-
 
 /*--------------------------------------------------------------
                   # 404 PAGE
@@ -727,17 +726,17 @@ label.fcf-label {
   margin-bottom: 1rem;
 }
 
-#page404 p{
+#page404 p {
   padding: 1rem;
 }
 
-#page404 a:hover{
+#page404 a:hover {
   text-decoration: none;
 }
 
 /* Tablet and above*/
 @media screen and (min-width: 768px) {
-  #page404 a{
+  #page404 a {
     margin-bottom: 1rem;
   }
 }
@@ -748,41 +747,156 @@ label.fcf-label {
 /* Header */
 .detailsHeader {
   padding: 60px;
-  text-align: center;
+  /* text-align: center; */
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("../images/banner1.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  min-height: 40vh;
+  height: 50vh;
   background-blend-mode: multiply;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 2px black;
+    animation: fadeIn 1s;
 }
 .detailsHeader h1 {
   text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   font-weight: 600;
-  text-shadow: 2px 2px 2px black;
-  margin-top: 20vh;
 }
 .detailsHeader p {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   font-size: 1rem;
-}
-#author {
-  font-weight: 600;
 }
 
 /* Page Content */
 .detailsContent {
-  padding: 1rem;
+  padding: 0.5rem;
   margin-top: 1rem;
+  font-size: 0.95rem;
+  animation: fadeIn 1s;
+}
+.detailsContent span {
+  margin: 5px;
+  margin-top: 1.5rem;
+  text-transform: capitalize;
+  color: var(--primaryTextColor);
+  background-color: #f1f1f1;
 }
 
-@media screen and (min-width: 600px) {
-  #blogDesc {
+/* Author section */
+.chip {
+  display: inline-block;
+  padding: 0 15px;
+  height: 50px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+  margin: 10px;
+}
+
+.chip img {
+  float: left;
+  margin: 0 10px 0 -25px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+/* Related Posts Section */
+.relatedPosts {
+  min-height: 30vh;
+  margin: 2rem 0.5rem;
+  animation: fadeIn 1s;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+
+  /* center and flex wrap in row direction */
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.relatedPosts .card {
+  width: 100%;
+  /* height: 100px; */
+  margin: 10px;
+}
+.relatedPosts button:hover{
+  transform: scale(1.2);
+}
+
+
+/* @media screen and (min-width: 600px) {
+  .relatedPosts .card {
+    width: 45%;
+}
+} */
+
+/* Tablets and above */
+@media screen and (min-width: 768px) {
+  .detailsHeader {
+    height: 40vh;
+  }
+  .detailsHeader h1 {
+    font-size: 2rem;
+  }
+  .detailsHeader p {
+    margin-top: 0.8rem;
+  }
+  .detailsContent {
+    /* padding: 0; */
+    margin-top: 2rem;
+    font-size: 1rem;
+  }
+  .relatedPosts .card {
+    width: 30%;
+  }
+}
+
+/* Any screen that is laptop and above*/
+@media screen and (min-width: 1024px) {
+  .detailsHeader h1 {
+    font-size: 2.3rem;
+  }
+  .detailsHeader p {
     margin-top: 1rem;
+    font-size: 1.1rem;
+  }
+  .detailsContent {
+    margin-top: 2.5rem;
+  }
+}
+
+/* Larger screens ie. large laptops, desktops etc. */
+@media screen and (min-width: 1280px) {
+  .detailsHeader h1 {
+    font-size: 2.5rem;
+  }
+  .detailsContent {
+    padding: 1rem;
+    margin-top: 2.5rem;
   }
 }
 
@@ -809,8 +923,8 @@ label.fcf-label {
 /*--------------------------------------------------------------
                   # BLOGS PAGE
 --------------------------------------------------------------*/
-.templateBody{
-min-height: 85vh;
-text-align: center;
-color: var(--primaryTextColor);
+.templateBody {
+  min-height: 85vh;
+  text-align: center;
+  color: var(--primaryTextColor);
 }

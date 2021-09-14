@@ -118,6 +118,7 @@ export const ALL_CATEGORIES = gql`
 `;
 
 
+
 /* -------------   GET QUERIES WITH QUERY VARIABLES  ----------------    */
 
 export const GET_SINGLE_POST = gql` 
@@ -142,6 +143,7 @@ query GetSinglePost($blogSlug: String!){ #for other variable types=> $variableNa
     categories {
       id
       name
+      slug
     }
   }
 }
@@ -177,6 +179,7 @@ export const PAGINATED_CATEGORYS_POSTS = gql`
 #Get all posts under a particular category and Count of posts in that category
 
 query categorysPost($categorySlug : String!, $limit: Int!) {
+  
   postsConnection(
     limit: $limit
     where: {categories: {slug: $categorySlug} } #double layer json to point to category.SLUG
@@ -216,3 +219,26 @@ query getCategoryName($categorySlug: String!){
 }
 `;
 
+export const GET_RELATED_POSTS = gql`
+# Getting related posts via category slug and sorting posts by published_at desc
+#limit is 3 posts
+
+query getRelatedPosts($categorySlug: String!, $blogID: ID!){
+  categoryBySlug(slug: $categorySlug){
+    # name
+    # id
+    slug
+    posts(
+      sort:"published_at:desc"
+      limit:3
+      where:{id_ne:$blogID} #dont include the selected postID
+    ){
+      id
+      title
+      slug
+      description
+      published_at
+    }
+  }  
+}
+`;

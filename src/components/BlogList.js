@@ -14,9 +14,9 @@ const BlogList = ({ query }) => {
     <div>
       {error && (
         <div>
-          <h4>
+          <h5>
             Blog posts couldn't be loaded <EmojiFrown />
-          </h4>
+          </h5>
           <p>({error.message})</p>
           <br />
         </div>

@@ -12,7 +12,7 @@ const Page404 = () => {
                 <img src={Avatar}
                     className="img-fluid" alt="avatar" loading="lazy" />
             </div>
-            <p>The page you're looking for doesn't exist on this website.</p>
+            <p>Sorry, the page you are looking for does not exist.</p>
             <Link to={HOMEPAGE_URL} id="fcf-button">Go to Homepage</Link>
         </div>
     );
