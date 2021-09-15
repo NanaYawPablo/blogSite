@@ -66,6 +66,9 @@ a:hover {
   border-radius: 0 0.7rem;
   box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);
 }
+.navbar a:hover {
+  transform: scale(1.2);
+}
 
 /*--------------------------------------------------------------
                   # FOOTER
@@ -166,16 +169,18 @@ a:hover {
   }
 }
 
+
 /*--------------------------------------------------------------
                   # SCROLL TO TOP
 --------------------------------------------------------------*/
 
 .scrollTop {
   position: fixed;
-  width: 100%;
+  /* width: 100%; */
+  width: 16%;
   bottom: 20px;
   align-items: center;
-  height: 20px;
+  /* height: 20px; */
   justify-content: left;
   z-index: 1000;
   cursor: pointer;
@@ -183,21 +188,28 @@ a:hover {
   transition: opacity 0.4s;
   opacity: 0.8;
   margin-left: -50px;
-  left: 50%;
+  /* left: 50%; */
+  left: 92%;
 }
-
 .scrollTop:hover {
   opacity: 1;
+  transform: scale(1.1);
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
+/* tablet+ */
+@media screen and (min-width: 768px) {
+  .scrollTop{
+    width: 9%;
+    left: 95%;
   }
-  100% {
-    opacity: 0.5;
   }
-}
+  /* laptop+ */
+  @media screen and (min-width: 1024px) {
+    .scrollTop{
+      width: 5%;
+      left: 96%;
+    }
+    }
 
 /*--------------------------------------------------------------
                   # HOME
@@ -298,7 +310,7 @@ a:hover {
   display: inline-block;
   /* padding: 8px 23px; */
   padding: 8px 10px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   background-color: var(--primaryColor);
   font-weight: normal;
   opacity: 0.8;
@@ -308,7 +320,6 @@ a:hover {
   border-radius: 0 0.7rem;
   box-shadow: 0 -2px 2px var(--buttonColor), 0 2px 2px var(--buttonColor);
 }
-
 
 /* Any screen that is tablet and above*/
 @media screen and (min-width: 768px) {
@@ -479,7 +490,6 @@ label.fcf-label {
   overflow: hidden;
   animation: fadeIn 0.3s;
 }
-
 .overlay {
   width: 100%;
   height: 100%;
@@ -519,6 +529,9 @@ label.fcf-label {
   font-weight: 600;
   font-size: 1.2rem;
   padding: 0.4rem;
+}
+.cardContent h2{
+  font-size: 1.4rem;
 }
 #articleCardTag {
   margin: 5px;
@@ -607,6 +620,7 @@ label.fcf-label {
   transform: scale(1.05);
   transition: 0.6s;
   box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.6);
+  color: var(--buttonColor);
 }
 
 /*--------------------------------------------------------------
@@ -724,6 +738,7 @@ label.fcf-label {
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+  animation: fadeIn 0.5s;
 }
 
 #page404 p {
@@ -763,7 +778,7 @@ label.fcf-label {
   justify-content: center;
   align-items: center;
   text-shadow: 2px 2px 2px black;
-    animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }
 .detailsHeader h1 {
   text-transform: uppercase;
@@ -843,10 +858,10 @@ label.fcf-label {
   /* height: 100px; */
   margin: 10px;
 }
-.relatedPosts button:hover{
-  transform: scale(1.2);
+.relatedPosts button:hover {
+  transform: scale(1.1);
+  color: var(--buttonColor);
 }
-
 
 /* @media screen and (min-width: 600px) {
   .relatedPosts .card {
@@ -927,4 +942,10 @@ label.fcf-label {
   min-height: 85vh;
   text-align: center;
   color: var(--primaryTextColor);
+}
+
+.loadingEndMsg{
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }

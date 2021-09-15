@@ -11,7 +11,7 @@ const ArticleCard = ({ title, date, tags, description, image }) => {
         <div className="cardContent">
           <Container fluid>
             <h1 id="cardTitle">{title} </h1>
-            <h5>
+            <h2>
               {tags &&
                 tags.map((category) => (
                   <span id="articleCardTag" key={category.id}
@@ -19,7 +19,7 @@ const ArticleCard = ({ title, date, tags, description, image }) => {
                     {category.name}
                   </span>
                 ))}
-            </h5>
+            </h2>
             <Row>
               <Col md={{ span: 12 }}>
                 <span className="articleDate">{moment(date).fromNow()}</span>

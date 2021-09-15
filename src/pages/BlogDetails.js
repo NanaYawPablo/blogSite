@@ -13,6 +13,7 @@ import { Redirect } from "react-router-dom"
 import React, { useState } from 'react';
 import LoadingPage from "../components/loadingPage";
 import RelatedPosts from "../components/relatedPosts";
+import { FAKE_LOADING_TIME } from "../constants/constants";
 
 
 const BlogDetails = () => {
@@ -22,7 +23,7 @@ const BlogDetails = () => {
     //set isLoading off
     setTimeout(() => {
         setIsFakeLoading(false)
-    }, 1500);
+    }, FAKE_LOADING_TIME);
 
 
     const { slug } = useParams()
@@ -62,7 +63,7 @@ const BlogDetails = () => {
 
                                     <Row>
                                         <Col md={{ span: 10, offset: 1 }} lg={{ span: 8, offset: 2 }}>
-                                            <div id="blogDesc" dangerouslySetInnerHTML={{ __html: markDownIt.render(data.postBySlug.content) }}>
+                                            <div id="blogDescription" dangerouslySetInnerHTML={{ __html: markDownIt.render(data.postBySlug.content) }}>
                                             </div>
                                         </Col>
                                     </Row>

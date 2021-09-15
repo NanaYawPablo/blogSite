@@ -12,10 +12,19 @@ import React, { useState } from 'react';
 import ScrollToTop from "../components/scrollToTop";
 import { Redirect } from "react-router-dom"
 import { PAGE404_URL } from "../constants/urls";
+import { FAKE_LOADING_TIME } from "../constants/constants";
+import LoadingPage from "../components/loadingPage";
 // import useFetch from "../hooks/useFetch";
 
 
 const Category = () => {
+  //fake loader
+  const [isFakeLoading, setIsFakeLoading] = useState(true)
+
+  //set isLoading off
+  setTimeout(() => {
+      setIsFakeLoading(false)
+  }, FAKE_LOADING_TIME);
 
   // eslint-disable-next-line no-unused-vars
   const [skip, setSkip] = useState(6);    /*  NB: Skip must always be same as Limit  */
@@ -72,6 +81,10 @@ const Category = () => {
   
   
   return (
+    isFakeLoading ? (
+      <LoadingPage />
+  ) :
+      (
     <section className="templateBody">
       {error && (
         <div style={{ margin: "2rem 0" }}>
@@ -95,7 +108,7 @@ const Category = () => {
               <h5>
                 Category Name couldn't be loaded <EmojiFrown />
               </h5>
-              <p>({categoryNameError.message})</p>
+              <p>({error.message})</p>
             </div>
           )}
           {isLoadingCategoryName && (console.log('Loading Category Name'))}
@@ -155,11 +168,12 @@ const Category = () => {
           className="fcf-btn">
           {isLoadingMore ? "Loading…" : "Load More"}
         </Button>
-
       }
 
     </section>
-  );
+ 
+      )
+ );
 };
 
 export default Category;
