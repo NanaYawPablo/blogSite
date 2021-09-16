@@ -23,7 +23,7 @@ const Home = () => {
     <div id="home">
 
       <div className="header">
-        <h1>Selim</h1>
+        <h1 className="bounceIn">Selim</h1>
         <h2>
           <ReactTypingEffect
             text={["Writer", "Polygot", "Babygirl"]}

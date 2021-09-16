@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import Avatar from '../assets/images/selim.jpeg'
+import Avatar from '../assets/images/selim1.jpeg'
 
 const About = () => {
     return (
