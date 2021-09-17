@@ -111,11 +111,13 @@ const Category = () => {
               <p>({error.message})</p>
             </div>
           )}
+
           {isLoadingCategoryName && (console.log('Loading Category Name'))}
+
           {categoryName && categoryName.categoryBySlug && (
             <h1 className="title">{categoryName.categoryBySlug.name}</h1>
           )}
-          {/* Null check for categoryName.categoryBySlug ie. dynamic url slug is invalid*/}
+          {/* Check for when the dynamic url categorySlug is invalid ie. categoryName.categoryBySlug will be null*/}
           {categoryName && !categoryName.categoryBySlug && (
             // <h1 className="title">Unkown Category</h1>
             <Redirect to={PAGE404_URL} />
@@ -123,6 +125,7 @@ const Category = () => {
 
 
           <div className="line"></div>
+          <div className="categoryBlock">
           {data && (
             data.postsConnection.aggregate.count === 1 ? (
               <p>{data.postsConnection.aggregate.count} post</p>
@@ -130,6 +133,7 @@ const Category = () => {
               <p>{data.postsConnection.aggregate.count} posts</p>
             )
           )}
+          </div>
         </div>
       </div>
 
@@ -137,41 +141,42 @@ const Category = () => {
       {/* Scroll Button */}
       <ScrollToTop />
 
-
-      <Container fluid>
-        <div className="allPostsRow">
-          {data &&
-            data.postsConnection.values.map((post) => (
-              <div className="postPreview" key={post.id}>
-                <div className="postCardColumn">
-                  <Link to={`/blogs/${post.slug}`}>
-                    <ArticleCard
-                      title={post.title}
-                      date={post.published_at}
-                      tags={post.categories}
-                      description={post.description}
-                      image={post.image}
-                    />
-                  </Link>
-                </div>
+      <div className="blogPostsBlock">
+            <Container fluid>
+              <div className="allPostsRow">
+                {data &&
+                  data.postsConnection.values.map((post) => (
+                    <div className="postPreview" key={post.id}>
+                      <div className="postCardColumn">
+                        <Link to={`/blogs/${post.slug}`}>
+                          <ArticleCard
+                            title={post.title}
+                            date={post.published_at}
+                            tags={post.categories}
+                            description={post.description}
+                            image={post.image}
+                          />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
               </div>
-            ))}
+            </Container>
+
+            {data && (data.postsConnection.values.length < data.postsConnection.aggregate.count) &&
+
+              <Button
+                onClick={loadMorePosts}
+                id="fcf-button"
+                style={{ marginBottom: "2rem" }}
+                className="fcf-btn">
+                {isLoadingMore ? "Loading…" : "Load More"}
+              </Button>
+            }
         </div>
-      </Container>
 
-      {data && (data.postsConnection.values.length < data.postsConnection.aggregate.count) &&
+        </section>
 
-        <Button
-          onClick={loadMorePosts}
-          id="fcf-button"
-          style={{ marginBottom: "2rem" }}
-          className="fcf-btn">
-          {isLoadingMore ? "Loading…" : "Load More"}
-        </Button>
-      }
-
-    </section>
- 
       )
  );
 };

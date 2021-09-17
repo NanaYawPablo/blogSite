@@ -40,7 +40,7 @@ const BlogDetails = () => {
             <LoadingPage />
         ) :
             (
-                <div className="templateBody fade-in">
+                <div className="templateBody">
 
                     {error &&
                         <div style={{ margin: "2rem 0" }}>

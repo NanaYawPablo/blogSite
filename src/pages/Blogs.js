@@ -77,65 +77,72 @@ const Blogs = () => {
         <div className="templateHeader">
           <h1 className="title">Blog Posts</h1>
           <div className="line"></div>
-          <p>Filter blogs by category:</p>
-          <CategoryList query={ALL_CATEGORIES} />
+          <div className="categoryBlock">
+            <p>Filter blogs by category:</p>
+            <CategoryList query={ALL_CATEGORIES} />
 
-          {/* TOTAL NUMBER OF ALL POSTS */}
-          {data &&
-            (data.postsConnection.aggregate.totalCount === 1 ? (
-              <p>{data.postsConnection.aggregate.totalCount} post</p>
-            ) : (
-              <p>{data.postsConnection.aggregate.totalCount} posts</p>
-            ))}
+            {/* TOTAL NUMBER OF ALL POSTS */}
+            {data &&
+              (data.postsConnection.aggregate.totalCount === 1 ? (
+                <p>{data.postsConnection.aggregate.totalCount} post</p>
+              ) : (
+                <p>{data.postsConnection.aggregate.totalCount} posts</p>
+              ))}
+          </div>
+
         </div>
 
         {/* Scroll Button */}
         <ScrollToTop />
 
-        <Container fluid>
-          <div className="allPostsRow">
-            <div>
-              {error && (
-                <div>
-                  <h4>
-                    Blog posts couldn't be loaded <EmojiFrown />
-                  </h4>
-                  <p>({error.message})</p>
-                  <br />
-                </div>
-              )}
-              {isLoading && <PreLoader />}
-              {data &&
-                data.postsConnection.values.map((post) => (
-                  <div className="postPreview" key={post.id}>
-                    <div className="postCardColumn">
-                      <Link to={`/blogs/${post.slug}`}>
-                        <ArticleCard
-                          title={post.title}
-                          date={post.published_at}
-                          tags={post.categories}
-                          description={post.description}
-                          image={post.image}
-                        />
-                      </Link>
-                    </div>
+        <div className="blogPostsBlock">
+
+          <Container fluid>
+            <div className="allPostsRow">
+              <div>
+                {error && (
+                  <div>
+                    <h4>
+                      Blog posts couldn't be loaded <EmojiFrown />
+                    </h4>
+                    <p>({error.message})</p>
+                    <br />
                   </div>
-                ))}
+                )}
+                {isLoading && <PreLoader />}
+                {data &&
+                  data.postsConnection.values.map((post) => (
+                    <div className="postPreview" key={post.id}>
+                      <div className="postCardColumn">
+                        <Link to={`/blogs/${post.slug}`}>
+                          <ArticleCard
+                            title={post.title}
+                            date={post.published_at}
+                            tags={post.categories}
+                            description={post.description}
+                            image={post.image}
+                          />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+              </div>
             </div>
-          </div>
-        </Container>
+          </Container>
 
-        {data && (data.postsConnection.values.length < data.postsConnection.aggregate.totalCount) &&
+          {data && (data.postsConnection.values.length < data.postsConnection.aggregate.totalCount) &&
 
-          <Button
-            onClick={loadMore}
-            id="fcf-button"
-            style={{ marginBottom: "2rem" }}
-            className="fcf-btn">
-            {isLoadingMore ? "Loading…" : "Load More"}
-          </Button>
+            <Button
+              onClick={loadMore}
+              id="fcf-button"
+              style={{ marginBottom: "2rem" }}
+              className="fcf-btn">
+              {isLoadingMore ? "Loading…" : "Load More"}
+            </Button>
+          }
 
-        }
+        </div>
+
       </div>
     </section>
   );
