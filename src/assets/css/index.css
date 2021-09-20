@@ -106,22 +106,38 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
-.socials > li {
-  /* padding: 1rem; */
+.socials > a {
+  padding: 1rem;
   list-style: none;
   color: rgb(50, 50, 50);
   margin: 0.5rem;
   cursor: pointer;
   position: relative;
-  /* border: 2px solid rgb(50, 50, 50); */
-  /* border-radius: 50%; */
+  border: 2px solid rgb(50, 50, 50);
+  border-radius: 50%;
   background: var(--primaryColor);
   transition: all 0.4s;
 }
-.socials > li:hover {
-  color: var(--buttonColor);
-  border-color: linear-gradient(to left, var(--buttonColor), #ed6663);
-  transform: scale(1.1);
+.socials > a:hover {
+  /* color: var(--buttonColor);
+  border-color:  var(--buttonColor); */
+  transform: scale(1.2);
+  color: white;
+}
+.socials .twitter:hover{
+  background: #55ACEE;
+  border-color: #55ACEE;
+}
+.socials .facebook:hover{
+  background: #3B5998;
+  border-color: #3B5998;
+}
+.socials .linkedin:hover{
+  background: #007bb5;
+  border-color: #007bb5;
+}
+.footer .devlink{
+  color: white;
 }
 
 /*--------------------------------------------------------------
@@ -299,6 +315,8 @@ a:hover {
   text-align: center;
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("../images/banner1.jpeg") no-repeat center fixed;
+    /* background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    #151515 no-repeat center fixed; */
   background-size: cover;
   color: white;
   font-size: 30px;
@@ -317,13 +335,12 @@ a:hover {
   margin-bottom: -1rem;
   /* transition: ease 0.5s;
   animation: 2s ease-in; */
-  /* background-image: url('../images/city.gif'); */
-  background-image: url("../images/africa.gif");
+  background-image: url("../images/africa.jpeg");
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   background-color: white;
-  background-size: 30%;
+  background-size: 25%;
   /* background-size: 50%; */
   background-repeat: repeat-x;
   background-position: center bottom;
@@ -511,6 +528,7 @@ label.fcf-label {
   color: palevioletred;
   margin-top: 0.5rem;
 }
+
 
 /*--------------------------------------------------------------
                   # ALL POSTS SECTION
@@ -724,18 +742,23 @@ label.fcf-label {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("../images/banner1.jpeg") no-repeat center fixed;
+  /* background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../images/banner1.jpeg") no-repeat center fixed; */
   background-size: cover;
 }
 .aboutCard {
   width: 95%;
   margin: 2rem;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.25);
-  background-color: var(--backgroundColor);
+  /* background-color: var(--backgroundColor); */
+  border-radius: 0 2rem;
+  border: 1px solid grey;
   transition: ease 0.8s;
   animation: slideUp .5s ease-in;
+}
+.aboutCard:hover{
+  transform: scale(1.05);
 }
 .aboutDetailsBlock {
   display: flex;
