@@ -1,5 +1,5 @@
 import { Navbar, Container, Row, Col } from 'react-bootstrap';
-import { Facebook, Linkedin, Twitter } from 'react-bootstrap-icons';
+import { Linkedin, Twitter } from 'react-bootstrap-icons';
 import React from 'react'; 
 
 const Footer = () => {
@@ -16,7 +16,6 @@ const Footer = () => {
 
                                     <a className="twitter" href=" https://twitter.com/emyvan1" target="_blank" rel="noopener noreferrer"><Twitter size={24} /></a>
                                     <a className="linkedin" href="https://www.linkedin.com/in/selim-vanlare-a34092109/" target="_blank" rel="noopener noreferrer"><Linkedin size={24} /></a>
-                                    <a className="facebook" href="https://www.linkedin.com/in/selim-vanlare-a34092109/" target="_blank" rel="noopener noreferrer"><Facebook size={24} /></a>
                                                    
                             </div>
                                     

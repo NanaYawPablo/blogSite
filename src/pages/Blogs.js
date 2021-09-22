@@ -1,14 +1,18 @@
 import { useQuery } from "@apollo/client";
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { EmojiFrown } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import ArticleCard from "../components/articleCard";
-import CategoryList from "../components/categoryList";
-import PreLoader from "../components/preLoader";
-import ScrollToTop from "../components/scrollToTop";
+// import CategoryList from "../components/categoryList";
+// import PreLoader from "../components/preLoader";
+// import ScrollToTop from "../components/scrollToTop";
 import { ALL_CATEGORIES, PAGINATED_POSTS } from "../constants/queries";
+
+const ScrollToTop = lazy(() => import('../components/scrollToTop'))
+const PreLoader = lazy(() => import('../components/preLoader'))
+const CategoryList = lazy(() => import('../components/categoryList'))
 
 
 
@@ -79,7 +83,9 @@ const Blogs = () => {
           <div className="line"></div>
           <div className="categoryBlock">
             <p>Filter blogs by category:</p>
+            <Suspense fallback={<div>Loading...</div>}>
             <CategoryList query={ALL_CATEGORIES} />
+            </Suspense>
 
             {/* TOTAL NUMBER OF ALL POSTS */}
             {data &&
@@ -92,8 +98,12 @@ const Blogs = () => {
 
         </div>
 
+
         {/* Scroll Button */}
+        <Suspense fallback={<div>Loading...</div>}>
         <ScrollToTop />
+        </Suspense>
+
 
         <div className="blogPostsBlock">
 
@@ -109,7 +119,11 @@ const Blogs = () => {
                     <br />
                   </div>
                 )}
-                {isLoading && <PreLoader />}
+                {isLoading && (
+                   <Suspense fallback={<div>Loading...</div>}>
+                <PreLoader />
+                </Suspense>
+                )}
                 {data &&
                   data.postsConnection.values.map((post) => (
                     <div className="postPreview" key={post.id}>

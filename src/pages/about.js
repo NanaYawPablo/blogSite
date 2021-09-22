@@ -16,10 +16,10 @@ const About = () => {
                   transitionSpeed={2000}
                   gyroscope={true}> */}
 
-                        <div>
                             <img src={Avatar}
+                            width="640" height="360"
                                 className="img-fluid avatar" alt="avatar" loading="lazy" />
-                        </div>
+                       
 
                         {/* </Tilt> */}
                     </Col>
@@ -27,8 +27,9 @@ const About = () => {
                     <Col md={6} className="aboutDetailsBlock">
                         <div className="aboutDetails">
                             <h1>About Me</h1>
-                            <p>Voluptate veniam qui laboris et dolor ex commodo ullamco sit. Mollit laborum ipsum do proident ea. Fugiat dolore et sit elit nisi qui qui adipisicing eiusmod excepteur nostrud velit laboris magna. Nulla duis excepteur enim excepteur dolore in. Esse dolor do deserunt nisi nisi duis tempor dolor qui exercitation eu quis qui. Incididunt labore qui laboris adipisicing. Enim ut amet sunt ea cillum laborum aute eiusmod.</p>
-                            <p>Aliqua aliqua elit consequat cillum reprehenderit adipisicing irure id dolor. Aliqua commodo in ex ex. Ad deserunt eu in enim.</p>
+                            <p>This is the part where I am supposed to impress you with accolades. Two things I love : Jesus and Food. </p>
+                            <p>We've all heard of this clichéd question, "What keeps you up at night?". Well, mine is the stories in my head so I decided to share them with you. Enjoy the read!</p>
+                        <p>XOXO</p>
                         </div>
                     </Col>
                 </Row>

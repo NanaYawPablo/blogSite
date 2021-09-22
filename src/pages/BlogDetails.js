@@ -5,15 +5,18 @@ import moment from "moment";
 import { Container, Row, Col } from "react-bootstrap";
 import { EmojiFrown } from "react-bootstrap-icons";
 import { useParams } from "react-router-dom";
-import PreLoader from "../components/preLoader";
 import { GET_SINGLE_POST } from "../constants/queries";
 import { BACKEND_URL, PAGE404_URL } from "../constants/urls";
 import MarkdownIt from "markdown-it";
 import { Redirect } from "react-router-dom"
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import LoadingPage from "../components/loadingPage";
-import RelatedPosts from "../components/relatedPosts";
 import { FAKE_LOADING_TIME } from "../constants/constants";
+
+// import PreLoader from "../components/preLoader";
+// import RelatedPosts from "../components/relatedPosts";
+const PreLoader = lazy(() => import('../components/preLoader'))
+const RelatedPosts = lazy(() => import('../components/relatedPosts'))
 
 
 const BlogDetails = () => {
@@ -48,7 +51,11 @@ const BlogDetails = () => {
                             <p>({error.message})</p>
                         </div>}
 
-                    {isLoading && (<PreLoader />)}
+                    {isLoading && (
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <PreLoader />
+                        </Suspense>
+                    )}
 
                     {data && (data.postBySlug) && (
                         <div>
@@ -68,11 +75,11 @@ const BlogDetails = () => {
                                         </Col>
                                     </Row>
 
-                                    <h5>{data.postBySlug.categories.map(
+                                    <p className="categoryTag">{data.postBySlug.categories.map(
                                         category =>
                                             <span key={category.id} className="badge badge-pill badge-light">#{category.name}</span>
                                     )}
-                                    </h5>
+                                    </p>
 
                                     {
                                         data.postBySlug.authors.map(
@@ -91,15 +98,17 @@ const BlogDetails = () => {
 
                             {/* RELATED POSTS SECTION */}
                             {/* checking for no category post */}
-                            {data.postBySlug.categories && (data.postBySlug.categories.length>0) &&(
-                               
-                               <RelatedPosts category={data.postBySlug.categories} blogId={data.postBySlug.id} />
+                            {data.postBySlug.categories && (data.postBySlug.categories.length > 0) && (
+
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <RelatedPosts category={data.postBySlug.categories} blogId={data.postBySlug.id} />
+                                </Suspense>
                             )}
 
                         </div>
                     )}
 
-                    {/* Null check for data.postBySlug ie. dynamic url slug is invalid*/}
+                    {/* Null check for data.postBySlug ie. dynamic blogPost url slug is invalid*/}
                     {data && (!data.postBySlug) && (
                         <Redirect to={PAGE404_URL} />
                     )

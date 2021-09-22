@@ -52,7 +52,7 @@ const RelatedPosts = ({ category, blogId }) => {
                                                     {/* {post.slug} */}
                                                     {/* <img className="card-img-top" src={Image} alt="Related post avatar" /> */}
                                                     <div className="card-body">
-                                                        <h5 className="card-title text-left">{post.title}</h5>
+                                                        <h1 className="card-title text-left">{post.title}</h1>
                                                         <p className="card-text text-left">{post.description}</p>
                                                         {/* <small className="text-muted text-right">Posted {moment(post.published_at).fromNow()}</small> */}
                                                     </div>

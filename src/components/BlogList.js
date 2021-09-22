@@ -2,11 +2,13 @@ import { useQuery } from "@apollo/client";
 import { EmojiFrown } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import ArticleCard from "./articleCard";
-import PreLoader from "./preLoader";
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useHistory } from 'react-router-dom'
 import { BLOGS_URL } from '../constants/urls'
 import { Button } from "react-bootstrap";
+
+// import PreLoader from "./preLoader";
+const PreLoader = lazy(() => import('./preLoader'))
 
 
 const BlogList = ({ query }) => {
@@ -25,14 +27,17 @@ const BlogList = ({ query }) => {
     <div>
       {error && (
         <div>
-          <h5>
+          <p>
             Blog posts couldn't be loaded <EmojiFrown />
-          </h5>
+          </p>
           <p>({error.message})</p>
-          <br />
         </div>
       )}
-      {isLoading && <PreLoader />}
+      {isLoading && (
+        <Suspense fallback={<div>Loading...</div>}>
+          <PreLoader />
+        </Suspense>
+      )}
       {latestPosts && (
         <div>
           {latestPosts.posts.map((post) => (

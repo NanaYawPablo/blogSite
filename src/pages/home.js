@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Container } from 'react-bootstrap'
 // import SubscriptionForm from '../components/subscriptionform'
-import ScrollToTop from '../components/scrollToTop'
-import BlogList from '../components/BlogList'
-import CategoryList from '../components/categoryList'
-// import { gql } from '@apollo/client' //cos calling from external queries file
+// import { gql } from '@apollo/client' //commented out cos I'm calling from external queries file
 import { ALL_CATEGORIES, LATEST_POSTS } from '../constants/queries'
 import ReactTypingEffect from 'react-typing-effect';
 
+// import BlogList from '../components/BlogList'
+// import CategoryList from '../components/categoryList'
+// import ScrollToTop from '../components/scrollToTop'
+const CategoryList = lazy(() => import('../components/categoryList'))
+const BlogList = lazy(() => import('../components/BlogList'))
+const ScrollToTop = lazy(() => import('../components/scrollToTop'))
 
 
 const Home = () => {
-  
+
   return (
     <div id="home">
 
       <div className="header">
-        {/* <h1 className="bounceIn">Selim</h1> */}
         <h1>Selim</h1>
         <h2>
           <ReactTypingEffect
@@ -33,13 +35,17 @@ const Home = () => {
       </div>
 
       {/* Scroll Button */}
+      <Suspense fallback={<div>Loading...</div>}>
       <ScrollToTop />
+      </Suspense>
 
       <section id="categories">
         <div className="line"></div>
         <p>Categories</p>
         <div className="line"></div>
-        <CategoryList query={ALL_CATEGORIES} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <CategoryList query={ALL_CATEGORIES} />
+        </Suspense>
       </section>
 
 
@@ -50,7 +56,9 @@ const Home = () => {
         <Container fluid>
 
           <div className="allPostsRow">
-            <BlogList query={LATEST_POSTS} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <BlogList query={LATEST_POSTS} />
+            </Suspense>
           </div>
 
         </Container>

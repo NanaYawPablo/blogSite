@@ -11,9 +11,6 @@
   --buttonColor: rgb(179, 153, 6);
   --font-stack-header: "Roboto", helvetica, arial, sans-serif;
   --default-min-height: 85vh;
-
-  /* --secondary-color: #151226; */
-  /* --contrast-color: #BF307F; */
 }
 
 html {
@@ -313,10 +310,10 @@ a:hover {
 /* Header/Logo Title */
 .header {
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("../images/banner1.jpeg") no-repeat center fixed;
-    /* background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    #151515 no-repeat center fixed; */
+  /* background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../images/banner1.jpeg") no-repeat center fixed; */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    #151515 no-repeat center fixed;
   background-size: cover;
   color: white;
   font-size: 30px;
@@ -780,9 +777,11 @@ label.fcf-label {
 
 .avatar {
   border-radius: 0.7rem;
-  width: 60%;
+  width: 100%;
+  height: auto;
   transition: ease 0.8s;
   animation: slideDown .8s ease-in;
+  padding: 5px;
 }
 .aboutDetails {
   padding: 2rem;
@@ -798,7 +797,6 @@ label.fcf-label {
     padding-top: 0;
   }
   .avatar {
-    width: 80%;
     border-radius: 0.5rem;
   }
   .aboutDetails {
@@ -822,9 +820,6 @@ label.fcf-label {
   .aboutDetails h1 {
     font-size: 1.3rem;
   }
-  .avatar {
-    width: 70%;
-  }
 }
 
 /* Larger screens ie. large laptops, desktops etc. */
@@ -837,9 +832,6 @@ label.fcf-label {
   }
   .aboutDetails h1 {
     font-size: 1.5rem;
-  }
-  .avatar {
-    width: 65%;
   }
 }
 
@@ -911,6 +903,10 @@ label.fcf-label {
   margin-top: 1rem;
   font-size: 1rem;
 }
+.detailsContent .categoryTag{
+  font-size: 1.2rem;
+}
+
 /* Animation for blog details page */
 .detailsHeader h1,.detailsHeader p,.detailsContent, .relatedPosts {
   transition: ease 0.8s;
@@ -952,7 +948,7 @@ label.fcf-label {
   border-radius: 50%;
 }
 
-/* Related Posts Section */
+/* ----- Related Posts Section ----- */
 .relatedPosts {
   min-height: 30vh;
   margin: 2rem 0.5rem;
@@ -987,12 +983,10 @@ label.fcf-label {
   transform: scale(1.1);
   color: var(--buttonColor);
 }
-
-/* @media screen and (min-width: 600px) {
-  .relatedPosts .card {
-    width: 45%;
+.relatedPosts h1{
+  font-size: 1.2rem;
 }
-} */
+
 
 /* Tablets and above */
 @media screen and (min-width: 768px) {
@@ -1089,3 +1083,11 @@ label.fcf-label {
   margin-bottom: 2rem;
 }
 
+
+/*--------------------------------------------------------------
+                  # ERROR BOUNDARY
+--------------------------------------------------------------*/
+.errorBoundary {
+  padding-top: 100px;
+  font-size: larger;
+}

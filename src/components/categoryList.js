@@ -5,7 +5,7 @@ import React from 'react';
 
 const CategoryList = ({ query }) => {
 
-    // const { data: allCategories, isLoading, error } = useFetch(url) // disabling rest calls usinng graphQL now
+    // const { data: allCategories, isLoading, error } = useFetch(url) // disabling rest calls using graphQL now
     const { data: allCategories, isLoading, error } = useQuery(query)
     // console.log(allCategories);
 
@@ -13,9 +13,8 @@ const CategoryList = ({ query }) => {
         <section id="categorylist">
             {error &&
                 <div>
-                    <h6>Categories couldn't be loaded</h6>
+                    <p>Categories couldn't be loaded</p>
                   <p>({error.message})</p>
-                    <br />
                 </div>}
             {isLoading && <p>Loading Categories...</p>}
 

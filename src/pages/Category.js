@@ -1,20 +1,24 @@
+import React, { lazy, Suspense, useState } from 'react';
 import { useQuery } from "@apollo/client";
 import { Button, Container } from "react-bootstrap";
 import { EmojiFrown } from "react-bootstrap-icons";
 import { Link, useParams } from "react-router-dom";
 import ArticleCard from "../components/articleCard";
-import PreLoader from "../components/preLoader";
 import {
   CATEGORY_NAME,
   PAGINATED_CATEGORYS_POSTS
 } from "../constants/queries";
-import React, { useState } from 'react';
-import ScrollToTop from "../components/scrollToTop";
 import { Redirect } from "react-router-dom"
 import { PAGE404_URL } from "../constants/urls";
 import { FAKE_LOADING_TIME } from "../constants/constants";
 import LoadingPage from "../components/loadingPage";
+// import PreLoader from "../components/preLoader";
+// import ScrollToTop from "../components/scrollToTop";
 // import useFetch from "../hooks/useFetch";
+
+
+const PreLoader = lazy(() => import('../components/preLoader'))
+const ScrollToTop = lazy(() => import('../components/scrollToTop'))
 
 
 const Category = () => {
@@ -95,7 +99,12 @@ const Category = () => {
         </div>
       )}
 
-      {isLoading && <PreLoader />}
+      {isLoading && (
+ <Suspense fallback={<div>Loading...</div>}>
+ <PreLoader />
+ </Suspense>
+      )   
+      }
 
 
       <div id="template">
@@ -139,7 +148,9 @@ const Category = () => {
 
 
       {/* Scroll Button */}
+      <Suspense fallback={<div>Loading...</div>}>
       <ScrollToTop />
+      </Suspense>
 
       <div className="blogPostsBlock">
             <Container fluid>

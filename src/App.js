@@ -1,3 +1,4 @@
+import React, { lazy, Suspense } from 'react'; 
 //React Router import
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
@@ -7,14 +8,23 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
 //page & layout imports
 import Navbar from './components/navbar'
 import Footer from "./components/footer"
-import Home from './pages/home'
 import { ABOUT_URL, BLOGS_URL, BLOG_URL, CATEGORY_URL, GRAPHQL_SERVER_ENTRYPOINT } from './constants/urls'
-import About from "./pages/about"
-import Page404 from "./pages/page404"
-import BlogDetails from "./pages/BlogDetails"
-import Category from "./pages/Category"
-import Blogs from "./pages/Blogs"
-import React from 'react'; 
+import LoadingPage from './components/loadingPage';
+import ErrorBoundary from './components/ErrorBoundary';
+//  import Home from './pages/home'
+// import About from "./pages/about"
+// import Page404 from "./pages/page404"
+// import BlogDetails from "./pages/BlogDetails"
+// import Category from "./pages/Category"
+// import Blogs from "./pages/Blogs"
+
+const Home = lazy(() => import('./pages/home'))
+const About = lazy(() => import('./pages/about'))
+const Page404 = lazy(() => import('./pages/page404'))
+const BlogDetails = lazy(() => import('./pages/BlogDetails'))
+const Category = lazy(() => import('./pages/Category'))
+const Blogs = lazy(() => import('./pages/Blogs'))
+
 
 //Apollo client setup
 const apolloClient = new ApolloClient({
@@ -28,6 +38,9 @@ function App() {
       <ApolloProvider client={apolloClient}>
         <div className="App">
         <Navbar />
+        <ErrorBoundary>
+
+        <Suspense fallback={<LoadingPage/>}>
         <Switch>
           <Route exact path='/'>
             <Home />
@@ -40,7 +53,10 @@ function App() {
             <Page404 />
           </Route>
         </Switch>
+        </Suspense>
         <Footer />
+
+        </ErrorBoundary>
         </div>
       </ApolloProvider>
     </Router>
