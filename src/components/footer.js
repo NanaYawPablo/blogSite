@@ -21,7 +21,7 @@ const Footer = () => {
                                     
                            <p>&copy; 2021 Selim Van Lare</p> 
                            <p>Built by <a className="devlink" href="https://www.isaacafrifa.com" target="_blank" rel="noopener noreferrer">
-                                Yaw Afrifa</a></p>
+                                Afrifa</a></p>
                                                           
                         </div>
                     </Container>

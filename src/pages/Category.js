@@ -27,7 +27,7 @@ const Category = () => {
 
   //set isLoading off
   setTimeout(() => {
-      setIsFakeLoading(false)
+    setIsFakeLoading(false)
   }, FAKE_LOADING_TIME);
 
   // eslint-disable-next-line no-unused-vars
@@ -82,77 +82,82 @@ const Category = () => {
 
   };
 
-  
-  
+
+
   return (
     isFakeLoading ? (
       <LoadingPage />
-  ) :
+    ) :
       (
-    <section className="templateBody">
-      {error && (
-        <div style={{ margin: "2rem 0" }}>
-          <h4>
-            Blog posts couldn't be loaded <EmojiFrown />
-          </h4>
-          <p>({error.message})</p>
-        </div>
-      )}
+        <section className="templateBody">
 
-      {isLoading && (
- <Suspense fallback={<div>Loading...</div>}>
- <PreLoader />
- </Suspense>
-      )   
-      }
+          <div id="template">
+            <div className="templateHeader">
+
+              {/* Category Name Call Implementation */}
+              {categoryNameError && (
+                <div style={{ margin: "2rem 0" }}>
+                  <h5>
+                    Category Name couldn't be loaded <EmojiFrown />
+                  </h5>
+                  <p>({error.message})</p>
+                </div>
+              )}
+
+              {isLoadingCategoryName && (console.log('Loading Category Name'))}
+
+              {categoryName && categoryName.categoryBySlug && (
+                <div>
+                  <h1>Category</h1>
+                  <h1 className="title">{categoryName.categoryBySlug.name}</h1>
+                  <div className="line"></div>
+                </div>
+              )}
+              {/* Check for when the dynamic url categorySlug is invalid ie. categoryName.categoryBySlug will be null*/}
+              {categoryName && !categoryName.categoryBySlug && (
+                // <h1 className="title">Unkown Category</h1>
+                <Redirect to={PAGE404_URL} />
+              )}
 
 
-      <div id="template">
-        <div className="templateHeader">
-          <h1>Category</h1>
+              {/* Scroll Button */}
+              <Suspense fallback={<div>Loading...</div>}>
+                <ScrollToTop />
+              </Suspense>
 
-          {/* Category Name Call Implementation */}
-          {categoryNameError && (
-            <div style={{ margin: "2rem 0" }}>
-              <h5>
-                Category Name couldn't be loaded <EmojiFrown />
-              </h5>
-              <p>({error.message})</p>
+
+
+              {/* Category Posts Call Implementation */}
+              {error && (
+                <div style={{ margin: "2rem 0" }}>
+                  <h1 style={{fontWeight:"500",animation:"none"}}>
+                    Blog posts couldn't be loaded <EmojiFrown />
+                  </h1>
+                  <p>({error.message})</p>
+                </div>
+              )}
+
+              {isLoading && (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <PreLoader />
+                </Suspense>
+              )
+              }
+
+              <div className="categoryBlock">
+                {data && (
+                  data.postsConnection.aggregate.count === 1 ? (
+                    <p>{data.postsConnection.aggregate.count} post</p>
+                  ) : (
+                    <p>{data.postsConnection.aggregate.count} posts</p>
+                  )
+                )}
+              </div>
             </div>
-          )}
-
-          {isLoadingCategoryName && (console.log('Loading Category Name'))}
-
-          {categoryName && categoryName.categoryBySlug && (
-            <h1 className="title">{categoryName.categoryBySlug.name}</h1>
-          )}
-          {/* Check for when the dynamic url categorySlug is invalid ie. categoryName.categoryBySlug will be null*/}
-          {categoryName && !categoryName.categoryBySlug && (
-            // <h1 className="title">Unkown Category</h1>
-            <Redirect to={PAGE404_URL} />
-          )}
-
-
-          <div className="line"></div>
-          <div className="categoryBlock">
-          {data && (
-            data.postsConnection.aggregate.count === 1 ? (
-              <p>{data.postsConnection.aggregate.count} post</p>
-            ) : (
-              <p>{data.postsConnection.aggregate.count} posts</p>
-            )
-          )}
           </div>
-        </div>
-      </div>
 
 
-      {/* Scroll Button */}
-      <Suspense fallback={<div>Loading...</div>}>
-      <ScrollToTop />
-      </Suspense>
-
-      <div className="blogPostsBlock">
+          <div className="blogPostsBlock">
             <Container fluid>
               <div className="allPostsRow">
                 {data &&
@@ -184,12 +189,12 @@ const Category = () => {
                 {isLoadingMore ? "Loading…" : "Load More"}
               </Button>
             }
-        </div>
+          </div>
 
         </section>
 
       )
- );
+  );
 };
 
 export default Category;
