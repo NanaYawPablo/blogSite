@@ -22,7 +22,6 @@ const BlogList = ({ query }) => {
     history.push(BLOGS_URL)
   }
 
-
   return (
     <div>
       {error && (
@@ -31,38 +30,44 @@ const BlogList = ({ query }) => {
             Blog posts couldn't be loaded <EmojiFrown />
           </p>
           <p>({error.message})</p>
-        </div>
-      )}
+        </div>)
+      }
+
       {isLoading && (
         <Suspense fallback={<div>Loading...</div>}>
           <PreLoader />
         </Suspense>
       )}
+      
       {latestPosts && (
-        <div>
-          {latestPosts.posts.map((post) => (
-            <div className="postPreview" key={post.id}>
-              <div className="postCardColumn">
-                <Link to={`/blogs/${post.slug}`}>
-                  <ArticleCard
-                    title={post.title}
-                    date={post.published_at}
-                    tags={post.categories}
-                    description={post.description}
-                    image={post.image}
-                  />
-                </Link>
-              </div>
-            </div>
-          ))}
-
+        //  Checking for when data:latestPosts has no post (ie. posts.length = 0). 
+        (latestPosts.posts.length > 0 ? (
           <div>
-            <Button onClick={handleOlderPosts} id="fcf-button"
-              className="fcf-btn">
-              Older Posts
-            </Button>
+            {latestPosts.posts.map((post) => (
+              <div className="postPreview" key={post.id}>
+                <div className="postCardColumn">
+                  <Link to={`/blogs/${post.slug}`}>
+                    <ArticleCard
+                      title={post.title}
+                      date={post.published_at}
+                      tags={post.categories}
+                      description={post.description}
+                      image={post.image}
+                    />
+                  </Link>
+                </div>
+              </div>
+            ))}
+
+            <div>
+              <Button onClick={handleOlderPosts} id="fcf-button"
+                className="fcf-btn">
+                Older Posts
+              </Button>
+            </div>
           </div>
-        </div>
+        ) : (<p className="text-muted">No new posts</p>)
+        )
       )
       }
     </div>

@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
-import React from 'react'; 
+import React from 'react';
 // import useFetch from "../hooks/useFetch";
 
 const CategoryList = ({ query }) => {
@@ -11,26 +11,33 @@ const CategoryList = ({ query }) => {
 
     return (
         <section id="categorylist">
-            {error &&
+            {error && (
                 <div>
                     <p>Categories couldn't be loaded</p>
-                  <p>({error.message})</p>
-                </div>}
-            {isLoading && <p>Loading Categories...</p>}
+                    <p>({error.message})</p>
+                </div>)
+                }
+
+            {isLoading && (<p>Loading Categories...</p>)}
 
             {allCategories && (
-                <div>
-                    <h4>
-                        {allCategories.categories.map(category => (
-                          
-                            <Link key={category.id} to={`/categories/${category.slug}`}>
-                                <span className="badge badge-secondary">{category.name}</span>
-                            </Link>
-                          
-                        )
-                        )}
-                    </h4>
-                </div>)}
+                //  Checking for when data:allCategories has no categories (ie. categories.length = 0). 
+                (allCategories.categories.length > 0 ? (
+                    <div>
+                        <h4>
+                            {allCategories.categories.map(category => (
+
+                                <Link key={category.id} to={`/categories/${category.slug}`}>
+                                    <span className="badge badge-secondary">{category.name}</span>
+                                </Link>
+
+                            )
+                            )}
+                        </h4>
+                    </div>
+                ) : (<p className="text-muted">No categories yet</p>)
+                )
+            )}
         </section>);
 }
 
