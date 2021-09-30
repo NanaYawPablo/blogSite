@@ -310,15 +310,9 @@ a:hover {
 /* Header/Logo Title */
 .header {
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    /* url("https://ik.imagekit.io/afrifa/selim/banner.jpeg?updatedAt=1632520606999") */
-  no-repeat center fixed;
-  background-image: url("https://ik.imagekit.io/afrifa/selim/banner.jpeg?updatedAt=1632520606999");
-  background-image: image-set(
-  "https://ik.imagekit.io/afrifa/selim/tr:w-800/banner.jpeg?updatedAt=1632520606999" 1x,
-  "https://ik.imagekit.io/afrifa/selim/tr:w-1200/banner.jpeg?updatedAt=1632520606999" 2x
-  );   
-    /* background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #151515; */
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://ik.imagekit.io/afrifa/selim/banner.jpeg?updatedAt=1632520606999") no-repeat center fixed; 
+   /* background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #151515; */
   background-size: cover;
   background-color: #151515;
   color: white;
